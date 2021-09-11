@@ -9,5 +9,27 @@
         android:id="@+id/mainFragment"
         android:name="com.john6.appbase.ui.MainFragment"
         tools:layout="@layout/fragment_main"
-        android:label="MainFragment" />
+        android:label="MainFragment" >
+        <action
+            android:id="@+id/action_mainFragment_to_demo3Fragment"
+            app:destination="@id/demo3Fragment" />
+        <action
+            android:id="@+id/action_mainFragment_to_demo2Fragment"
+            app:destination="@id/demo2Fragment" />
+        <action
+            android:id="@+id/action_mainFragment_to_demo1Fragment"
+            app:destination="@id/demo1Fragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/demo1Fragment"
+        android:name="com.john6.appbase.ui.Demo1Fragment"
+        android:label="Demo1Fragment" />
+    <fragment
+        android:id="@+id/demo2Fragment"
+        android:name="com.john6.appbase.ui.Demo2Fragment"
+        android:label="Demo2Fragment" />
+    <fragment
+        android:id="@+id/demo3Fragment"
+        android:name="com.john6.appbase.ui.Demo3Fragment"
+        android:label="Demo3Fragment" />
 </navigation>

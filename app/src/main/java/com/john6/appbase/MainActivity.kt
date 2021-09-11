@@ -15,5 +15,14 @@ class MainActivity : BaseActivity() {
         super.onCreate(savedInstanceState)
         mBinding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(mBinding.root)
+
+        initView()
+
+    }
+
+    private fun initView() {
+        mBinding.navBtnAttMain.setOnClickListener {
+            onBackPressed()
+        }
     }
 }

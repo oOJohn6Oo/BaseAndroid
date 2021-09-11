@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">AppBase</string>
+
+    <string name="nav_back_description">Back</string>
 </resources>
