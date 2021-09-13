@@ -9,17 +9,7 @@
         android:id="@+id/mainFragment"
         android:name="com.john6.appbase.ui.MainFragment"
         tools:layout="@layout/fragment_main"
-        android:label="MainFragment" >
-        <action
-            android:id="@+id/action_mainFragment_to_demo3Fragment"
-            app:destination="@id/demo3Fragment" />
-        <action
-            android:id="@+id/action_mainFragment_to_demo2Fragment"
-            app:destination="@id/demo2Fragment" />
-        <action
-            android:id="@+id/action_mainFragment_to_demo1Fragment"
-            app:destination="@id/demo1Fragment" />
-    </fragment>
+        android:label="@string/app_name" />
     <fragment
         android:id="@+id/demo1Fragment"
         android:name="com.john6.appbase.ui.Demo1Fragment"

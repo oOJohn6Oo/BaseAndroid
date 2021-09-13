@@ -66,7 +66,8 @@ abstract class BaseFragment<B : ViewBinding> : Fragment() {
 //     */
 //    override fun onConfigurationChanged(newConfig: Configuration) {
 //        super.onConfigurationChanged(newConfig)
-//        doChangeView().takeIf { newConfig.isNightModeNow != baseActivity.isNightMode }
+//        if(newConfig.isNightModeNow != baseActivity.isNightMode)
+//            doChangeView()
 //    }
 //
 //    /**

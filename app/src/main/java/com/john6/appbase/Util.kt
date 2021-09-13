@@ -10,12 +10,17 @@ import android.util.Log
 import android.util.TypedValue
 import android.view.HapticFeedbackConstants.VIRTUAL_KEY
 import android.view.View
+import android.view.View.GONE
+import android.view.View.VISIBLE
 import android.view.Window
 import android.view.animation.OvershootInterpolator
+import androidx.activity.ComponentActivity
 import androidx.annotation.AttrRes
 import androidx.core.content.ContextCompat
 import androidx.core.view.WindowCompat
 import androidx.core.view.WindowInsetsCompat
+import androidx.fragment.app.Fragment
+import androidx.lifecycle.LiveData
 import com.google.android.material.transition.MaterialArcMotion
 import com.google.android.material.transition.MaterialContainerTransform
 import java.lang.reflect.ParameterizedType
@@ -67,7 +72,7 @@ fun Window.showKeyboard(requestView: View = this.decorView) {
     WindowCompat.getInsetsController(this, requestView)?.show(WindowInsetsCompat.Type.ime())
 }
 
-fun Class<*>.getGenericType(index:Int) =
+fun Class<*>.getGenericType(index: Int) =
     (this.genericSuperclass as ParameterizedType).actualTypeArguments[index] as Class<*>
 //</editor-fold>
 
@@ -103,7 +108,9 @@ fun Context.getColorInt(@AttrRes colorAttrId: Int) =
 val Int.tint
     get() = ColorStateList.valueOf(this)
 
-
+fun View.visible(show: Boolean = true) {
+    this.visibility = if (show) VISIBLE else GONE
+}
 //</editor-fold>
 
 //<editor-fold desc="Animation Stuff">
@@ -128,3 +135,11 @@ operator fun View.times(endView: View) = MaterialContainerTransform().let {
     it.scrimColor = Color.TRANSPARENT
 }
 //</editor-fold>
+
+fun <T> Fragment.observe(liveData: LiveData<T>, observer: (T) -> Unit) {
+    liveData.observe(this.viewLifecycleOwner, {it?.also { observer(it)} })
+}
+
+fun <T> ComponentActivity.observe(liveData: LiveData<T>, observer: (T) -> Unit) {
+    liveData.observe(this, { it?.also{ observer(it) } })
+}
