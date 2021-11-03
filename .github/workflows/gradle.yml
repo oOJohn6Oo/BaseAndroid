@@ -25,5 +25,5 @@ jobs:
     - name: Publish to GitHub
       run: ./gradlew publish
       env:
-        USERNAME: ${{ github.repository_owner }}
+        USERNAME: ${{ github.actor }}
         TOKEN: ${{ github.token }}
