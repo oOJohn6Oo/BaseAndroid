@@ -2,10 +2,14 @@ apply plugin: 'maven-publish'
 
 buildscript {
     ext{
+        Properties properties = new Properties()
+        properties.load(project.rootProject.file('local.properties').newDataInputStream())
+
+        GitHubName = properties.getProperty('JohnBase.user')
+        PAT = properties.getProperty('JohnBase.token')
+
         myArtifactId = "john-base"
         myVersion = "1.0.0"
-        user = project.findProperty("JohnBase.user") as String
-        key = project.findProperty("JohnBase.key") as String
     }
 }
 
@@ -13,10 +17,10 @@ publishing {
     repositories {
         maven {
             name = "GitHubPackages"
-            url = uri("https://github.com/oOJohn6Oo/BaseAndroid")
+            url = uri("https://maven.pkg.github.com/$GitHubName/BaseAndroid")
             credentials {
-                username = "$user" ?: System.getenv("USERNAME")
-                password = "$key" ?: System.getenv("TOKEN")
+                username = "$GitHubName" ?: System.getenv("USERNAME")
+                password = "$PAT" ?: System.getenv("TOKEN")
             }
         }
     }
