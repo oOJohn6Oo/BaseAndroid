@@ -19,3 +19,8 @@
 # If you keep the line number information, uncomment this to
 # hide the original source file name.
 #-renamesourcefileattribute SourceFile
+-dontwarn androidx.viewbinding.**
+-keep class androidx.viewbinding.** { *; }
+-keep class * extends androidx.viewbinding.ViewBinding {*;}
+
+-keep class * extends com.john6.johnbase.base.BaseViewHolder{*;}
