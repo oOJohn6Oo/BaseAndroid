@@ -4,6 +4,8 @@ buildscript {
     ext{
         myArtifactId = "john-base"
         myVersion = "1.0.0"
+        user = project.findProperty("JohnBase.user") as String
+        key = project.findProperty("JohnBase.key") as String
     }
 }
 
@@ -13,8 +15,8 @@ publishing {
             name = "GitHubPackages"
             url = uri("https://github.com/oOJohn6Oo/BaseAndroid")
             credentials {
-                username = project.findProperty("JohnBase.user") ?: System.getenv("USERNAME")
-                password = project.findProperty("JohnBase.key") ?: System.getenv("TOKEN")
+                username = "$user" ?: System.getenv("USERNAME")
+                password = "$key" ?: System.getenv("TOKEN")
             }
         }
     }
