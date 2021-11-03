@@ -12,10 +12,10 @@ publishing {
         maven {
             name = "GitHubPackages"
             url = uri("https://github.com/oOJohn6Oo/BaseAndroid")
-//            credentials {
-//                username = project.findProperty("JohnBase.user") ?: ""
-//                password = project.findProperty("JohnBase.key") ?: ""
-//            }
+            credentials {
+                username = project.findProperty("JohnBase.user") ?: System.getenv("USERNAME")
+                password = project.findProperty("JohnBase.key") ?: System.getenv("TOKEN")
+            }
         }
     }
     publications {
