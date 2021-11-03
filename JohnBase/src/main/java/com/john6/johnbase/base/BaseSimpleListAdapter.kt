@@ -1,4 +1,4 @@
-package com.john6.appbase.base
+package com.john6.johnbase.base
 
 import android.view.View
 import android.view.ViewGroup

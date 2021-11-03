@@ -1,14 +1,14 @@
-package com.john6.appbase.base
+package com.john6.johnbase.base
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.annotation.Keep
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewbinding.ViewBinding
-import com.john6.appbase.getGenericType
+import com.john6.johnbase.util.getGenericType
 
 @Keep
-class BaseListAdapter<T, VB:ViewBinding, H:BaseViewHolder<T,VB>>(val dataList:List<T>,private val holderClass:Class<H>):RecyclerView.Adapter<H>() {
+class BaseListAdapter<T, VB:ViewBinding, H: BaseViewHolder<T, VB>>(val dataList:List<T>, private val holderClass:Class<H>):RecyclerView.Adapter<H>() {
     private var classVB = holderClass.getGenericType(1)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): H {

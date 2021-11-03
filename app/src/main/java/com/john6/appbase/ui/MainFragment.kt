@@ -5,18 +5,19 @@ import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.viewModels
 import androidx.navigation.NavDestination
-import com.john6.appbase.base.BaseFragment
+import androidx.navigation.fragment.findNavController
+import com.john6.johnbase.base.BaseFragment
 import com.john6.appbase.databinding.FragmentMainBinding
-import com.john6.appbase.observe
 import com.john6.appbase.ui.adapter.MainListAdapter
 import com.john6.appbase.vm.MainViewModel
+import com.john6.johnbase.util.observe
 
 class MainFragment : BaseFragment<FragmentMainBinding>() {
     private val mModel by viewModels<MainViewModel>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        mModel.initNavGraphData(navController)
+        mModel.initNavGraphData(findNavController())
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

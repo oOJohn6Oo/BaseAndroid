@@ -1,6 +1,7 @@
-package com.john6.appbase.base
+package com.john6.johnbase.base
 
 import android.graphics.Color
+import android.os.Build
 import android.os.Bundle
 import android.widget.FrameLayout
 import android.widget.ProgressBar
@@ -8,7 +9,7 @@ import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.WindowCompat
 import androidx.core.view.WindowInsetsControllerCompat
-import com.john6.appbase.isNightModeNow
+import com.john6.johnbase.util.isNightModeNow
 
 abstract class BaseActivity : AppCompatActivity() {
     private var mLoadingDialog: AlertDialog? = null
@@ -20,7 +21,7 @@ abstract class BaseActivity : AppCompatActivity() {
         setupTheme()
     }
 
-    fun showLoadingDialog(cancelable: Boolean = true) {
+    fun showLoading(cancelable: Boolean = true) {
         if (mLoadingDialog == null) {
             mLoadingDialog = AlertDialog.Builder(this).create().apply {
                 this.window?.decorView?.setBackgroundColor(Color.TRANSPARENT)
@@ -47,7 +48,9 @@ abstract class BaseActivity : AppCompatActivity() {
         val wic = WindowInsetsControllerCompat(window, window.decorView)
         wic.isAppearanceLightStatusBars = !isNightMode
         wic.isAppearanceLightNavigationBars = !isNightMode
-        window.navigationBarColor = Color.TRANSPARENT
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            window.navigationBarColor = Color.TRANSPARENT
+        }
     }
 
 

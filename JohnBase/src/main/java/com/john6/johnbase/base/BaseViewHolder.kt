@@ -1,4 +1,4 @@
-package com.john6.appbase.base
+package com.john6.johnbase.base
 
 import androidx.annotation.Keep
 import androidx.recyclerview.widget.RecyclerView

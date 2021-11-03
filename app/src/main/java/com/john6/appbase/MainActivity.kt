@@ -4,8 +4,9 @@ import android.os.Bundle
 import androidx.navigation.NavController
 import androidx.navigation.NavDestination
 import androidx.navigation.findNavController
-import com.john6.appbase.base.BaseActivity
 import com.john6.appbase.databinding.ActivityMainBinding
+import com.john6.johnbase.base.BaseActivity
+import com.john6.johnbase.util.visible
 
 /**
  * Since this APP is One-Activity Multi-Fragment

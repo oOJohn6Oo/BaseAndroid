@@ -8,3 +8,4 @@ dependencyResolutionManagement {
 }
 rootProject.name = "AppBase"
 include ':app'
+include ':JohnBase'

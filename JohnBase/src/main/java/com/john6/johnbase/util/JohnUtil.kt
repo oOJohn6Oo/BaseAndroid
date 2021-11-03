@@ -1,4 +1,4 @@
-package com.john6.appbase
+package com.john6.johnbase.util
 
 import android.animation.ObjectAnimator
 import android.content.Context

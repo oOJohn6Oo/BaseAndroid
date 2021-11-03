@@ -9,9 +9,9 @@ import androidx.navigation.NavDestination
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.john6.appbase.R
-import com.john6.appbase.base.BaseSimpleListAdapter
-import com.john6.appbase.dp
-import com.john6.appbase.getAttrResId
+import com.john6.johnbase.base.BaseSimpleListAdapter
+import com.john6.johnbase.util.dp
+import com.john6.johnbase.util.getAttrResId
 
 class MainListAdapter(dataList: List<NavDestination>) :
     BaseSimpleListAdapter<NavDestination, TextView>(dataList) {

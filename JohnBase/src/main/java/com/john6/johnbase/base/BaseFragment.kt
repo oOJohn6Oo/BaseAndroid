@@ -1,14 +1,12 @@
-package com.john6.appbase.base
+package com.john6.johnbase.base
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.navigation.*
-import androidx.navigation.fragment.NavHostFragment
 import androidx.viewbinding.ViewBinding
-import com.john6.appbase.getGenericType
+import com.john6.johnbase.util.getGenericType
 
 /**
  * On Jetpack navigation
@@ -39,7 +37,7 @@ abstract class BaseFragment<B : ViewBinding> : Fragment() {
     //</editor-fold>
 
     fun showLoading(cancelable: Boolean = true) {
-        baseActivity.showLoadingDialog(cancelable)
+        baseActivity.showLoading(cancelable)
     }
 
     fun dismissLoading() {
@@ -48,9 +46,6 @@ abstract class BaseFragment<B : ViewBinding> : Fragment() {
 
     val baseActivity: BaseActivity
         get() = requireActivity() as BaseActivity
-    val navController: NavController
-        get() = NavHostFragment.findNavController(this)
-
 
     private fun getViewBindingByReflect(inflater: LayoutInflater, container: ViewGroup?) =
         javaClass.getGenericType(0).getDeclaredMethod(
