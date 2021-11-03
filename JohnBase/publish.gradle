@@ -2,14 +2,16 @@ apply plugin: 'maven-publish'
 
 buildscript {
     ext{
-        Properties properties = new Properties()
-        properties.load(project.rootProject.file('local.properties').newDataInputStream())
+        GitHubName = "oOJohn6Oo"
+        // Personal Access Token
+        PAT = null
 
-        GitHubName = properties.getProperty('JohnBase.user')
-        PAT = properties.getProperty('JohnBase.token')
-
-        myArtifactId = "john-base"
-        myVersion = "1.0.0"
+        localFile = rootProject.file('local.properties')
+        if (localFile != null) {
+            Properties properties = new Properties()
+            properties.load(localFile.newDataInputStream())
+            PAT = properties.getProperty('JohnBase.token')
+        }
     }
 }
 
@@ -20,7 +22,10 @@ publishing {
             url = uri("https://maven.pkg.github.com/$GitHubName/BaseAndroid")
             credentials {
                 username = "$GitHubName" ?: System.getenv("USERNAME")
-                password = "$PAT" ?: System.getenv("TOKEN")
+                if (PAT == null)
+                    password = System.getenv("TOKEN")
+                else
+                    password = PAT
             }
         }
     }
@@ -37,8 +42,8 @@ publishing {
 //            from components.java
 
             groupId = 'com.github.john6'
-            artifactId = myArtifactId
-            version = myVersion
+            artifactId = 'john-base'
+            version = '1.0.0'
 
             artifact("$buildDir/outputs/aar/JohnBase-release.aar")
         }
