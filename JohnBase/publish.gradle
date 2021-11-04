@@ -6,8 +6,8 @@ buildscript {
         // Personal Access Token
         PAT = null
 
-        localFile = rootProject.file('local.properties')
-        if (localFile != null) {
+        File localFile = rootProject.file('local.properties')
+        if (localFile.exists()) {
             Properties properties = new Properties()
             properties.load(localFile.newDataInputStream())
             PAT = properties.getProperty('JohnBase.token')
