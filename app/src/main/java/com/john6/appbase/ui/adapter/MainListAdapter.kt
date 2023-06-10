@@ -8,7 +8,6 @@ import androidx.core.view.setPadding
 import androidx.navigation.NavDestination
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
-import com.john6.appbase.R
 import com.john6.johnbase.base.BaseSimpleListAdapter
 import com.john6.johnbase.util.dp
 import com.john6.johnbase.util.getAttrResId
@@ -17,7 +16,7 @@ class MainListAdapter(dataList: List<NavDestination>) :
     BaseSimpleListAdapter<NavDestination, TextView>(dataList) {
     override fun onCreateView(parent: ViewGroup, viewType: Int) = TextView(parent.context).also {
         it.layoutParams = ViewGroup.LayoutParams(MATCH_PARENT, WRAP_CONTENT)
-        val bgdId = it.context.getAttrResId(R.attr.selectableItemBackground)
+        val bgdId = it.context.getAttrResId(android.R.attr.selectableItemBackground)
         it.setBackgroundResource(bgdId)
         it.textSize = 16f
         it.setPadding(20.dp.toInt())

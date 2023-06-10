@@ -4,12 +4,13 @@ plugins {
 }
 
 android {
-    compileSdk 31
+    compileSdk 33
+    namespace "com.john6.appbase"
 
     defaultConfig {
         applicationId "com.john6.appbase"
         minSdk 21
-        targetSdk 31
+        targetSdk 33
         versionCode 1
         versionName "1.0"
 
@@ -23,11 +24,11 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
     }
     kotlinOptions {
-        jvmTarget = '1.8'
+        jvmTarget = '17'
     }
     buildFeatures {
         viewBinding true
@@ -36,8 +37,8 @@ android {
 
 dependencies {
 
-    implementation 'androidx.constraintlayout:constraintlayout:2.1.1'
-    implementation 'androidx.navigation:navigation-fragment-ktx:2.3.5'
-    implementation 'com.github.john6:john-base:1.0.0'
-//    implementation project(path: ':JohnBase')
+    implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
+    implementation 'androidx.navigation:navigation-fragment-ktx:2.6.0'
+//    implementation 'com.github.john6:john-base:1.0.0'
+    implementation project(path: ':JohnBase')
 }
