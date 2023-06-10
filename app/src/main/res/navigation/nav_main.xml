@@ -16,10 +16,10 @@
         android:label="Demo1Fragment" />
     <fragment
         android:id="@+id/demo2Fragment"
-        android:name="com.john6.appbase.ui.Demo2Fragment"
-        android:label="Demo2Fragment" />
+        android:name="com.john6.appbase.ui.DemoLoadingFragment"
+        android:label="DemoLoading" />
     <fragment
         android:id="@+id/demo3Fragment"
-        android:name="com.john6.appbase.ui.Demo3Fragment"
-        android:label="Demo3Fragment" />
+        android:name="com.john6.appbase.ui.DemoComposeFragment"
+        android:label="DemoCompose" />
 </navigation>

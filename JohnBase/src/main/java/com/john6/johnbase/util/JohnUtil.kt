@@ -5,24 +5,20 @@ import android.content.Context
 import android.content.res.ColorStateList
 import android.content.res.Configuration
 import android.content.res.Resources
-import android.graphics.Color
 import android.util.Log
 import android.util.TypedValue
 import android.view.HapticFeedbackConstants.VIRTUAL_KEY
 import android.view.View
 import android.view.View.GONE
 import android.view.View.VISIBLE
+import android.view.ViewGroup
 import android.view.Window
 import android.view.animation.OvershootInterpolator
-import androidx.activity.ComponentActivity
 import androidx.annotation.AttrRes
 import androidx.core.content.ContextCompat
 import androidx.core.view.WindowCompat
 import androidx.core.view.WindowInsetsCompat
-import androidx.fragment.app.Fragment
-import androidx.lifecycle.LiveData
-import com.google.android.material.transition.MaterialArcMotion
-import com.google.android.material.transition.MaterialContainerTransform
+import androidx.lifecycle.DefaultLifecycleObserver
 import java.lang.reflect.ParameterizedType
 
 //<editor-fold desc="Must Have">
@@ -33,14 +29,10 @@ fun String.log(debug: Boolean = true) {
         Log.e("lq", this)
 }
 
-val Int.dp
-    get() = TypedValue.applyDimension(
-        TypedValue.COMPLEX_UNIT_DIP,
-        this.toFloat(),
-        Resources.getSystem().displayMetrics
-    )
+val Int.vdp
+    get() = this.toFloat().vdp
 
-val Float.dp
+val Float.vdp
     get() = TypedValue.applyDimension(
         TypedValue.COMPLEX_UNIT_DIP,
         this,
@@ -48,18 +40,19 @@ val Float.dp
     )
 
 val Int.sp
-    get() = TypedValue.applyDimension(
-        TypedValue.COMPLEX_UNIT_SP,
-        this.toFloat(),
-        Resources.getSystem().displayMetrics
-    )
+    get() = this.toFloat().vsp
 
-val Float.sp
+val Float.vsp
     get() = TypedValue.applyDimension(
         TypedValue.COMPLEX_UNIT_SP,
         this,
         Resources.getSystem().displayMetrics
     )
+
+
+class ViewBindingObserver:DefaultLifecycleObserver{
+}
+
 //</editor-fold>
 
 
@@ -125,21 +118,34 @@ fun View.shake(duration: Long = 500L, p: Float) {
         start()
     }
 }
-
-operator fun View.times(endView: View) = MaterialContainerTransform().let {
-    it.startView = this
-    it.endView = endView
-    it.addTarget(endView)
-    it.setPathMotion(MaterialArcMotion())
-    it.duration = 500
-    it.scrimColor = Color.TRANSPARENT
-}
 //</editor-fold>
 
-fun <T> Fragment.observe(liveData: LiveData<T>, observer: (T) -> Unit) {
-    liveData.observe(this.viewLifecycleOwner, {it?.also { observer(it)} })
+fun View.setBottomPadding(desirePadding: Int) {
+    this.setPadding(
+        this.paddingLeft,
+        this.paddingTop,
+        this.paddingRight,
+        desirePadding
+    )
 }
 
-fun <T> ComponentActivity.observe(liveData: LiveData<T>, observer: (T) -> Unit) {
-    liveData.observe(this, { it?.also{ observer(it) } })
+fun View.setTopPadding(desirePadding: Int) {
+    this.setPadding(
+        this.paddingLeft,
+        desirePadding,
+        this.paddingRight,
+        this.paddingBottom
+    )
+}
+
+fun View.setBottomMargin(desireMargin: Int) {
+    val lp = this.layoutParams as? ViewGroup.MarginLayoutParams ?: return
+    lp.bottomMargin = desireMargin
+    this.layoutParams = lp
+}
+
+fun View.setTopMargin(desireMargin: Int) {
+    val lp = this.layoutParams as? ViewGroup.MarginLayoutParams ?: return
+    lp.topMargin = desireMargin
+    this.layoutParams = lp
 }

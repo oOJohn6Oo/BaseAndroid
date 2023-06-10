@@ -1,11 +1,13 @@
 package com.john6.appbase
 
 import android.os.Bundle
+import androidx.fragment.app.FragmentActivity
+import androidx.lifecycle.LifecycleOwner
 import androidx.navigation.NavController
 import androidx.navigation.NavDestination
 import androidx.navigation.findNavController
 import com.john6.appbase.databinding.ActivityMainBinding
-import com.john6.johnbase.base.BaseActivity
+import com.john6.johnbase.util.InsetsHelper
 import com.john6.johnbase.util.visible
 
 /**
@@ -13,16 +15,19 @@ import com.john6.johnbase.util.visible
  * Actually we don't need a Base
  * But just in case.
  */
-class MainActivity : BaseActivity() {
+class MainActivity : FragmentActivity() {
     private lateinit var mBinding:ActivityMainBinding
+    private val insetsHelper = InsetsHelper()
     private val onDestChangeListener = NavController.OnDestinationChangedListener(this::onDestinationChanged)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        lifecycle.addObserver(insetsHelper)
         mBinding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(mBinding.root)
 
         initView()
+        insetsHelper.statusBarResponseView = mBinding.toolbarAttMain
     }
 
     override fun onStart() {
@@ -40,7 +45,7 @@ class MainActivity : BaseActivity() {
 
     private fun initView() {
         mBinding.navBtnAttMain.setOnClickListener {
-            onBackPressed()
+            onBackPressedDispatcher.onBackPressed()
         }
     }
 

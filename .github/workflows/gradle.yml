@@ -20,8 +20,15 @@ jobs:
         cache: gradle
     - name: Grant execute permission for gradlew
       run: chmod +x gradlew
-    - name: Build with Gradle
-      run: ./gradlew :johnbase:assembleRelease
+    - name: Build john-base with Gradle
+      run: ./gradlew :JohnBase:assembleRelease
+    - name: Publish to GitHub
+      run: ./gradlew publish
+      env:
+        USERNAME: ${{ github.actor }}
+        TOKEN: ${{ github.token }}
+    - name: Build john-base-compose with Gradle
+      run: ./gradlew :JohnBaseCompose:assembleRelease
     - name: Publish to GitHub
       run: ./gradlew publish
       env:
