@@ -15,8 +15,6 @@ buildscript {
     }
 }
 
-group = 'com.github.john6'
-version = '0.0.2'
 
 android {
     publishing {
