@@ -15,6 +15,10 @@ buildscript {
         }
     }
 }
+
+group = 'com.github.john6'
+version = '1.0.3'
+
 android {
     publishing {
         singleVariant("release") {
