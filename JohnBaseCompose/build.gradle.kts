@@ -41,7 +41,7 @@ android {
 }
 
 dependencies {
-    implementation("androidx.appcompat:appcompat:1.6.1")
-    implementation("androidx.compose.material:material:1.4.3")
-    implementation("androidx.core:core-ktx:1.10.1")
+    api("androidx.appcompat:appcompat:1.6.1")
+    api("androidx.compose.material:material:1.4.3")
+    api("androidx.core:core-ktx:1.10.1")
 }
