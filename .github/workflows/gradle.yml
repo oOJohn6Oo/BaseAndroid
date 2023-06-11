@@ -7,7 +7,6 @@ on:
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
 
     steps:
@@ -19,20 +18,21 @@ jobs:
         distribution: 'adopt'
         cache: gradle
     - name: Grant execute permission for gradlew
-      run: chmod +x gradlew
+      run: |
+        echo 'triggered by ${{ github.ref_name }}'
+        chmod +x gradlew
     - name: Build JohnBase with Gradle and publish
       env:
         USERNAME: ${{ github.actor }}
         TOKEN: ${{ github.token }}
       run: |
-        ./gradlew :JohnBase:assembleRelease
-        ./gradlew :JohnBase:publish
-      if: contains(${{ github.ref_name }}, 'base-v')
-    - name: Build JohnBaseCompose with Gradle and publish
-      env:
-        USERNAME: ${{ github.actor }}
-        TOKEN: ${{ github.token }}
-      run: |
-        ./gradlew :JohnBaseCompose:assembleRelease
-        ./gradlew :JohnBaseCompose:publish
-      if: contains(${{ github.ref_name }}, 'compose-v')
+        module=""
+        if [[ "${{github.ref_name}}" == *"base-v"* ]]; then module=":JohnBase"; fi
+        if [[ "${{github.ref_name}}" == *"compose-v"* ]]; then module=":JohnBaseCompose"; fi
+        echo desire build module \'${module}\'
+        if [ -z $module ]; then
+          echo "module not determined, exit"
+        else
+          ./gradlew ${module}:assembleRelease
+          ./gradlew ${module}:publish
+        fi
