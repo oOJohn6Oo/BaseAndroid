@@ -1,6 +1,7 @@
 apply plugin: 'maven-publish'
 
 buildscript {
+
     ext{
         GitHubName = "oOJohn6Oo"
         // Personal Access Token
@@ -14,38 +15,39 @@ buildscript {
         }
     }
 }
-
-publishing {
-    repositories {
-        maven {
-            name = "GitHubPackages"
-            url = uri("https://maven.pkg.github.com/$GitHubName/BaseAndroid")
-            credentials {
-                username = "$GitHubName" ?: System.getenv("USERNAME")
-                if (PAT == null)
-                    password = System.getenv("TOKEN")
-                else
-                    password = PAT
-            }
+android {
+    publishing {
+        singleVariant("release") {
+            it.withJavadocJar()
+            it.withSourcesJar()
         }
     }
-    publications {
-        //This defines a publication called "JohnBase"
-        // that can be published to a Maven repository
-        // by virtue of its type: MavenPublication.
-        JohnBase(MavenPublication) {
-//            This publication consists of just
-//            the production JAR artifact and its metadata,
-//            which combined are represented by the
-//            java component of the project.
+}
 
-//            from components.java
+afterEvaluate {
 
-            groupId = 'com.github.john6'
-            artifactId = 'john-base'
-            version = '1.0.2'
+    publishing {
+        repositories {
+            maven {
+                name = "GitHubPackages"
+                url = uri("https://maven.pkg.github.com/$GitHubName/BaseAndroid")
+                credentials {
+                    username = "$GitHubName" ?: System.getenv("USERNAME")
+                    if (PAT == null)
+                        password = System.getenv("TOKEN")
+                    else
+                        password = PAT
+                }
+            }
+        }
 
-            artifact("$buildDir/outputs/aar/JohnBase-release.aar")
+        publications {
+            JohnBase(MavenPublication) {
+                from components.release
+                groupId = 'com.github.john6'
+                artifactId = 'john-base'
+                version = '1.0.2'
+            }
         }
     }
 }

@@ -1,3 +1,5 @@
+@file:Suppress("UNUSED_PARAMETER")
+
 package com.john6.appbase
 
 import android.os.Bundle

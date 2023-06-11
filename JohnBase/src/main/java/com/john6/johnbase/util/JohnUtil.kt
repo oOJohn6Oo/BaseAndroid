@@ -1,3 +1,5 @@
+@file:Suppress("unused")
+
 package com.john6.johnbase.util
 
 import android.animation.ObjectAnimator
@@ -5,6 +7,7 @@ import android.content.Context
 import android.content.res.ColorStateList
 import android.content.res.Configuration
 import android.content.res.Resources
+import android.os.Build
 import android.util.Log
 import android.util.TypedValue
 import android.view.HapticFeedbackConstants.VIRTUAL_KEY
@@ -14,8 +17,10 @@ import android.view.View.VISIBLE
 import android.view.ViewGroup
 import android.view.Window
 import android.view.animation.OvershootInterpolator
+import android.view.inputmethod.InputMethodManager
 import androidx.annotation.AttrRes
 import androidx.core.content.ContextCompat
+import androidx.core.view.ViewCompat
 import androidx.core.view.WindowCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.lifecycle.DefaultLifecycleObserver
@@ -49,20 +54,34 @@ val Float.vsp
         Resources.getSystem().displayMetrics
     )
 
-
-class ViewBindingObserver:DefaultLifecycleObserver{
-}
-
 //</editor-fold>
 
 
 //<editor-fold desc="Tool">
 fun Window.hideKeyboard(requestView: View = this.decorView) {
-    WindowCompat.getInsetsController(this, requestView)?.hide(WindowInsetsCompat.Type.ime())
+
+    if (Build.VERSION.SDK_INT < Build.VERSION_CODES.R) {
+        val imm =
+            requestView.context.getSystemService(Context.INPUT_METHOD_SERVICE) as? InputMethodManager
+                ?: return
+        imm.hideSoftInputFromWindow(requestView.windowToken, 0)
+    } else {
+        requestView.clearFocus()
+        WindowCompat.getInsetsController(this, requestView).hide(WindowInsetsCompat.Type.ime())
+    }
 }
 
+@Suppress("DEPRECATION")
 fun Window.showKeyboard(requestView: View = this.decorView) {
-    WindowCompat.getInsetsController(this, requestView)?.show(WindowInsetsCompat.Type.ime())
+    if (Build.VERSION.SDK_INT < Build.VERSION_CODES.R) {
+        val imm =
+            requestView.context.getSystemService(Context.INPUT_METHOD_SERVICE) as? InputMethodManager
+                ?: return
+        imm.showSoftInput(requestView, InputMethodManager.SHOW_FORCED)
+    } else {
+        requestView.requestFocus()
+        WindowCompat.getInsetsController(this, requestView).show(WindowInsetsCompat.Type.ime())
+    }
 }
 
 fun Class<*>.getGenericType(index: Int) =

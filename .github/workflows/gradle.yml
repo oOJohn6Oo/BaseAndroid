@@ -3,7 +3,7 @@ name: Package with Gradle
 on:
   push:
     tags: 
-      - "v*"
+      - "*v*"
 
 jobs:
   build:
@@ -20,17 +20,19 @@ jobs:
         cache: gradle
     - name: Grant execute permission for gradlew
       run: chmod +x gradlew
-    - name: Build john-base with Gradle
-      run: ./gradlew :JohnBase:assembleRelease
-    - name: Publish to GitHub
-      run: ./gradlew publish
+    - name: Build JohnBase with Gradle and publish
       env:
         USERNAME: ${{ github.actor }}
         TOKEN: ${{ github.token }}
-    - name: Build john-base-compose with Gradle
-      run: ./gradlew :JohnBaseCompose:assembleRelease
-    - name: Publish to GitHub
-      run: ./gradlew publish
+      run: |
+        ./gradlew :JohnBase:assembleRelease
+        ./gradlew :JohnBase:publish
+      if: contains(${{ github.ref_name }}, 'base-v')
+    - name: Build JohnBaseCompose with Gradle and publish
       env:
         USERNAME: ${{ github.actor }}
         TOKEN: ${{ github.token }}
+      run: |
+        ./gradlew :JohnBaseCompose:assembleRelease
+        ./gradlew :JohnBaseCompose:publish
+      if: contains(${{ github.ref_name }}, 'compose-v')
