@@ -2,6 +2,7 @@
 
 package com.john6.johnbase.util
 
+import android.annotation.SuppressLint
 import android.app.Activity
 import android.content.ComponentCallbacks
 import android.content.ContentResolver
@@ -13,6 +14,8 @@ import android.provider.Settings
 import android.view.View
 import android.view.Window
 import androidx.annotation.RequiresApi
+import androidx.core.graphics.Insets
+import androidx.core.view.DisplayCutoutCompat
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowCompat
 import androidx.core.view.WindowInsetsCompat
@@ -65,6 +68,8 @@ open class InsetsHelper : DefaultLifecycleObserver {
 
     // 导航栏改变时会调用此方法
     var onNavBarInsetChanged: ((height: Int) -> Unit)? = null
+
+    var onInsetsChanged: ((insets: WindowInsetsCompat) -> Unit)? = null
 
     /**
      * 是否启用状态栏遮罩
@@ -129,6 +134,7 @@ open class InsetsHelper : DefaultLifecycleObserver {
 
         ViewCompat.setOnApplyWindowInsetsListener(desiredView) { _, insets ->
 
+            onInsetsChanged?.invoke(insets)
             val inset = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             configStatusBarResponse(inset.top)
             configNavBarResponse(inset.bottom)
@@ -174,6 +180,10 @@ open class InsetsHelper : DefaultLifecycleObserver {
     }
 
 
+    /**
+     * 监听系统配置变化
+     * 确保即使 Manifest 中的 configChanges 配置了 "uiMode" 也能表现正常
+     */
     private fun listenToConfigChange(lifecycleOwner: LifecycleOwner) {
         if (Build.VERSION.SDK_INT < Build.VERSION_CODES.Q) return
         val activity = when (lifecycleOwner) {
@@ -356,6 +366,7 @@ open class InsetsHelper : DefaultLifecycleObserver {
             getSystemProperty("ro.miui.ui.version.name").isNotBlank()
         }
 
+        @SuppressLint("PrivateApi")
         fun getSystemProperty(propName: String) = try {
             val systemProperties = Class.forName("android.os.SystemProperties")
             val method = systemProperties.getMethod("get", String::class.java)
@@ -367,6 +378,34 @@ open class InsetsHelper : DefaultLifecycleObserver {
         private fun isInNightMode(configuration: Configuration): Boolean {
             return configuration.uiMode and Configuration.UI_MODE_NIGHT_MASK == Configuration.UI_MODE_NIGHT_YES
         }
+
     }
 
+}
+
+fun WindowInsetsCompat.safeDrawing(): Insets {
+    val systemBars = this.getInsets(WindowInsetsCompat.Type.systemBars())
+    val displayCutout = this.getInsets(WindowInsetsCompat.Type.displayCutout())
+    return systemBars.union(displayCutout)
+}
+
+fun WindowInsetsCompat.safeGestures(): Insets {
+    val tappableElement = this.getInsets(WindowInsetsCompat.Type.tappableElement())
+    val mandatorySystemGestures = this.getInsets(WindowInsetsCompat.Type.mandatorySystemGestures())
+    val systemGestures = this.getInsets(WindowInsetsCompat.Type.systemGestures())
+    val waterfall = displayCutout?.waterfallInsets ?: Insets.NONE
+    return tappableElement.union(mandatorySystemGestures).union(systemGestures).union(waterfall)
+}
+
+fun WindowInsetsCompat.safeContent(): Insets {
+    return safeDrawing().union(safeGestures())
+}
+
+fun Insets.union(other: Insets): Insets {
+    return Insets.of(
+        maxOf(this.left, other.left),
+        maxOf(this.top, other.top),
+        maxOf(this.right, other.right),
+        maxOf(this.bottom, other.bottom)
+    )
 }

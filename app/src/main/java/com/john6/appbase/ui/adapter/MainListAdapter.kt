@@ -1,6 +1,7 @@
 package com.john6.appbase.ui.adapter
 
 import android.annotation.SuppressLint
+import android.graphics.Color
 import android.view.ViewGroup
 import android.view.ViewGroup.LayoutParams.MATCH_PARENT
 import android.view.ViewGroup.LayoutParams.WRAP_CONTENT

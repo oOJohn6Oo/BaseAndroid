@@ -12,6 +12,8 @@ import com.john6.appbase.databinding.FragmentMainBinding
 import com.john6.appbase.ui.adapter.MainListAdapter
 import com.john6.appbase.vm.MainViewModel
 import com.john6.johnbase.util.InsetsHelper
+import com.john6.johnbase.util.safeContent
+import com.john6.johnbase.util.safeDrawing
 
 class MainFragment : Fragment() {
     private val mViewModel by viewModels<MainViewModel>()
@@ -38,7 +40,11 @@ class MainFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         mBinding.recyclerViewFgMain.adapter = MainListAdapter()
         mViewModel.getAvailablePage().observe(viewLifecycleOwner, this::onListDataChanged)
-        insetsHelper.navBarResponseView = mBinding.recyclerViewFgMain
+        insetsHelper.onInsetsChanged = { insets ->
+            insets.safeDrawing().apply {
+                mBinding.recyclerViewFgMain.setPaddingRelative(left, 0, right, bottom)
+            }
+        }
     }
 
     override fun onDestroyView() {

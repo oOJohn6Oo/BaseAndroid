@@ -3,6 +3,9 @@
 package com.john6.appbase
 
 import android.os.Bundle
+import androidx.compose.foundation.layout.WindowInsets
+import androidx.compose.foundation.layout.safeContent
+import androidx.core.view.WindowInsetsCompat
 import androidx.fragment.app.FragmentActivity
 import androidx.lifecycle.LifecycleOwner
 import androidx.navigation.NavController
@@ -10,6 +13,7 @@ import androidx.navigation.NavDestination
 import androidx.navigation.findNavController
 import com.john6.appbase.databinding.ActivityMainBinding
 import com.john6.johnbase.util.InsetsHelper
+import com.john6.johnbase.util.safeContent
 import com.john6.johnbase.util.visible
 
 /**
@@ -29,7 +33,6 @@ class MainActivity : FragmentActivity() {
         setContentView(mBinding.root)
 
         initView()
-        insetsHelper.statusBarResponseView = mBinding.toolbarAttMain
     }
 
     override fun onStart() {
@@ -48,6 +51,10 @@ class MainActivity : FragmentActivity() {
     private fun initView() {
         mBinding.navBtnAttMain.setOnClickListener {
             onBackPressedDispatcher.onBackPressed()
+        }
+        insetsHelper.onInsetsChanged = { insets->
+            val safeContent = insets.safeContent()
+            mBinding.toolbarAttMain.setPaddingRelative(safeContent.left, safeContent.top, safeContent.right, 0)
         }
     }
 
