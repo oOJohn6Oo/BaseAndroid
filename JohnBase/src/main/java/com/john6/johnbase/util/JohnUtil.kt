@@ -7,6 +7,7 @@ import android.content.Context
 import android.content.res.ColorStateList
 import android.content.res.Configuration
 import android.content.res.Resources
+import android.graphics.Color
 import android.os.Build
 import android.util.Log
 import android.util.TypedValue
@@ -19,6 +20,7 @@ import android.view.Window
 import android.view.animation.OvershootInterpolator
 import android.view.inputmethod.InputMethodManager
 import androidx.annotation.AttrRes
+import androidx.annotation.IntRange
 import androidx.core.content.ContextCompat
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowCompat
@@ -119,6 +121,10 @@ fun Context.getColorInt(@AttrRes colorAttrId: Int) =
 
 val Int.tint
     get() = ColorStateList.valueOf(this)
+
+fun Int.alpha(@IntRange(from = 0, to = 255) alpha: Int){
+    Color.argb(alpha, Color.red(this), Color.green(this), Color.blue(this))
+}
 
 fun View.visible(show: Boolean = true) {
     this.visibility = if (show) VISIBLE else GONE
