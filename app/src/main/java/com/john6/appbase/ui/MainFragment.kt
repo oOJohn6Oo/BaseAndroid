@@ -20,7 +20,9 @@ class MainFragment : Fragment() {
 
     private var _mBinding: FragmentMainBinding? = null
     private val mBinding get() = _mBinding!!
-    private val insetsHelper = InsetsHelper()
+    private val insetsHelper = InsetsHelper().apply {
+        enforceNavBar = true
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

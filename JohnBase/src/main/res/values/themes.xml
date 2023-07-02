@@ -12,6 +12,5 @@
     <style name="Theme.John.BaseTheme.App">
         <item name="android:windowLightStatusBar" tools:targetApi="m">true</item>
         <item name="android:windowLightNavigationBar" tools:targetApi="o_mr1">true</item>
-        <item name="android:colorBackground">@android:color/white</item>
     </style>
 </resources>

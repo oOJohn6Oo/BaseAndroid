@@ -15,7 +15,6 @@ import android.view.View
 import android.view.Window
 import androidx.annotation.RequiresApi
 import androidx.core.graphics.Insets
-import androidx.core.view.DisplayCutoutCompat
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowCompat
 import androidx.core.view.WindowInsetsCompat
@@ -49,27 +48,53 @@ open class InsetsHelper : DefaultLifecycleObserver {
      * 如果拦截 WindowInsets，则会强制分发一次 WindowInsets 到这个View
      */
     var dispatchView: View? = null
+
+    /**
+     * 是否消耗掉所有的 WindowInsets
+     */
     var consumeWindowInsets = false
 
-    // 响应状态栏的View
+    /**
+     * 响应状态栏的View
+     */
     var statusBarResponseView: View? = null
 
-    // 状态栏响应模式，默认 true => padding, false => margin
+    /**
+     * 状态栏响应模式，默认 true => padding, false => margin
+     */
     var statusBarRespondPadding: Boolean = true
 
-    // 状态栏改变时会调用此方法
+    /**
+     * 状态栏改变时会调用此方法
+     */
     var onStatusBarInsetChanged: ((height: Int) -> Unit)? = null
 
-    // 响应导航栏的View
+    /**
+     * 响应导航栏的View
+     */
     var navBarResponseView: View? = null
 
-    // 导航栏响应模式，默认 true => padding, false => margin
+    /**
+     * 导航栏响应模式，默认 true => padding, false => margin
+     */
     var navBarRespondPadding: Boolean = true
 
-    // 导航栏改变时会调用此方法
+    /**
+     * 导航栏改变时会调用此方法
+     */
     var onNavBarInsetChanged: ((height: Int) -> Unit)? = null
 
     var onInsetsChanged: ((insets: WindowInsetsCompat) -> Unit)? = null
+
+    /**
+     * 指示普通/黑暗模式下，状态栏是否为亮色模式，true 黑色；false 白色
+     */
+    var lightStatusBarUiInNormalAndDarkMode: Pair<Boolean, Boolean>? = true to false
+
+    /**
+     * 指示普通/黑暗模式下，**导航栏**是否为亮色模式，true 黑色；false 白色
+     */
+    var lightNavBarUiInNormalAndDarkMode: Pair<Boolean, Boolean>? = true to false
 
     /**
      * 是否启用状态栏遮罩
@@ -77,7 +102,7 @@ open class InsetsHelper : DefaultLifecycleObserver {
      * * false 不启用
      * * null 不管
      */
-    var enforceStatusBar: Boolean? = false
+    var enforceStatusBar: Boolean? = null
 
     /**
      * 是否启用导航栏遮罩
@@ -85,7 +110,7 @@ open class InsetsHelper : DefaultLifecycleObserver {
      * * false 不启用
      * * null 不管
      */
-    var enforceNavBar: Boolean? = false
+    var enforceNavBar: Boolean? = null
 
     private var window: Window? = null
     private var observeView: View? = null
@@ -96,7 +121,9 @@ open class InsetsHelper : DefaultLifecycleObserver {
     var forceNavBarColor: Int? = null
 
 
-    // 遮罩颜色
+    /**
+     * 遮罩颜色
+     */
     open val scrimColor: Int
         get() = if (isInNightMode(
                 observeView?.resources?.configuration ?: Resources.getSystem().configuration
@@ -118,16 +145,12 @@ open class InsetsHelper : DefaultLifecycleObserver {
         listenToConfigChange(owner)
 
         window?.also {
+            // 使用直接设置颜色的方式达到遮罩效果，所以统一设置为 false
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
                 it.isStatusBarContrastEnforced = false
                 it.isNavigationBarContrastEnforced = false
             }
             WindowCompat.setDecorFitsSystemWindows(it, false)
-            // 谷歌的一个BUG，安卓8.0不支持XML设置，只能代码设置
-            if (Build.VERSION.SDK_INT == Build.VERSION_CODES.O) {
-                WindowCompat.getInsetsController(it, it.decorView).isAppearanceLightNavigationBars =
-                    true
-            }
         }
 
         val desiredView = observeView ?: return
@@ -140,6 +163,9 @@ open class InsetsHelper : DefaultLifecycleObserver {
             configNavBarResponse(inset.bottom)
             if (enableResponse && Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
                 configNavBarColor(insets)
+                window?.also {
+                    configSystemBarAppearance(it)
+                }
             }
             if (consumeWindowInsets) {
                 dispatchView?.also {
@@ -148,6 +174,30 @@ open class InsetsHelper : DefaultLifecycleObserver {
                 WindowInsetsCompat.CONSUMED
             } else {
                 insets
+            }
+        }
+    }
+
+    private fun configSystemBarAppearance(window: Window) {
+        val statusBarUi = lightStatusBarUiInNormalAndDarkMode
+        val navBarUi = lightNavBarUiInNormalAndDarkMode
+        if (statusBarUi == null && navBarUi == null) return
+
+        WindowCompat.getInsetsController(window, window.decorView).apply {
+            if (isInNightMode(window.context.resources.configuration)) {
+                if (statusBarUi != null) {
+                    isAppearanceLightStatusBars = statusBarUi.second
+                }
+                if (navBarUi != null) {
+                    isAppearanceLightNavigationBars = navBarUi.second
+                }
+            } else {
+                if (statusBarUi != null) {
+                    isAppearanceLightStatusBars = statusBarUi.first
+                }
+                if (navBarUi != null) {
+                    isAppearanceLightNavigationBars = navBarUi.first
+                }
             }
         }
     }
@@ -345,21 +395,32 @@ open class InsetsHelper : DefaultLifecycleObserver {
         }
 
         /**
-         * 根据[androidx.core.graphics.Insets.left]的具体值判断是否为手势导航
+         * 根据[androidx.core.graphics.Insets]的具体值判断是否为手势导航
          * 针对MIUI特殊判断
          *
          * @param insets 当前 Window 的相关信息
          * @return 手势导航 ==> true, 按钮导航 ==> false
          */
-        fun isGestureNav(contentResolver: ContentResolver?, insets: WindowInsetsCompat): Boolean {
+        fun isGestureNav(contentResolver: ContentResolver?, insets: WindowInsetsCompat?): Boolean {
             if (isMiUI) {
                 if (Build.VERSION.SDK_INT < Build.VERSION_CODES.JELLY_BEAN_MR1) return false
                 val miNavBarMode =
                     Settings.Global.getInt(contentResolver, "force_fsg_nav_bar", 0)
                 return miNavBarMode == 1
             }
-            val inset = insets.getInsets(WindowInsetsCompat.Type.systemGestures())
-            return inset.left > 0
+            if (insets == null) return false
+            // Horizontal gesture nav: Insets{left=0, top=0, right=0, bottom=44}
+            // Vertical gesture nav: Insets{left=0, top=0, right=0, bottom=44}
+            // Vertical Button nav: Insets{left=0, top=0, right=0, bottom=132}
+            // Vertical Button nav: Insets{left=132, top=0, right=0, bottom=0}
+            val navbarInsets = insets.getInsets(WindowInsetsCompat.Type.navigationBars())
+            // Horizontal gesture nav: Insets{left=82, top=66, right=82, bottom=88}
+            // Vertical gesture nav: Insets{left=82, top=66, right=82, bottom=88}
+            // Vertical gesture nav: Insets{left=0, top=77, right=0, bottom=132}
+            // Vertical gesture nav: Insets{left=132, top=66, right=0, bottom=0}
+            val gestureInsets = insets.getInsets(WindowInsetsCompat.Type.systemGestures())
+            return if (navbarInsets.right == gestureInsets.right) false
+            else gestureInsets.left > 0
         }
 
         val isMiUI by lazy {

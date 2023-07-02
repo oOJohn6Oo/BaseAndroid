@@ -4,8 +4,10 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.WindowInsetsSides
+import androidx.compose.foundation.layout.add
 import androidx.compose.foundation.layout.asPaddingValues
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.only
@@ -18,6 +20,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.ComposeView
 import androidx.fragment.app.Fragment
 import io.john6.johnbase.compose.JohnAppTheme
+import io.john6.johnbase.compose.spaceMedium
 
 class DemoComposeFragment : Fragment() {
     override fun onCreateView(
@@ -38,7 +41,13 @@ private fun DemoComposeScreen() {
             modifier = Modifier
                 .fillMaxSize(),
             contentPadding = WindowInsets.safeDrawing
-                .only(WindowInsetsSides.Bottom + WindowInsetsSides.Horizontal).asPaddingValues()
+                .only(WindowInsetsSides.Bottom + WindowInsetsSides.Horizontal)
+                .add(
+                    WindowInsets(
+                        left = MaterialTheme.spaceMedium,
+                        right = MaterialTheme.spaceMedium,
+                    )
+                ).asPaddingValues()
         ) {
             items(100) {
                 Box(modifier = Modifier.fillMaxSize()) {

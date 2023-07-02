@@ -20,8 +20,9 @@ class MainViewModel : ViewModel() {
     fun initNavGraphData(navController: NavController) = CoroutineScope(Dispatchers.IO).launch{
         availablePage.value?.takeIf { it.isEmpty() }?.let {
             navController.graph.forEach { dest ->
-                if (dest.id != R.id.mainFragment)
+                if (dest.id != R.id.mainFragment) {
                     it.add(dest)
+                }
             }
             availablePage.postValue(it)
         }

@@ -2,6 +2,5 @@
     <style name="Theme.John.BaseTheme.App">
         <item name="android:windowLightStatusBar" tools:targetApi="m">false</item>
         <item name="android:windowLightNavigationBar" tools:targetApi="o_mr1">false</item>
-        <item name="android:colorBackground">@android:color/black</item>
     </style>
 </resources>

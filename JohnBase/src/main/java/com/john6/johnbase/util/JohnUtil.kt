@@ -115,8 +115,7 @@ fun Context.getAttrResId(@AttrRes attr: Int) =
 fun Context.getColorInt(@AttrRes colorAttrId: Int) =
     TypedValue().let { tv ->
         this.theme.resolveAttribute(colorAttrId, tv, true)
-        ContextCompat.getColor(this, tv.resourceId).takeIf { tv.type == TypedValue.TYPE_STRING }
-            ?: tv.data
+        tv.data.takeIf { tv.resourceId == 0 } ?: ContextCompat.getColor(this, tv.resourceId)
     }
 
 val Int.tint
