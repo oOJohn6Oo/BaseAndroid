@@ -46,7 +46,7 @@ val Float.vdp
         Resources.getSystem().displayMetrics
     )
 
-val Int.sp
+val Int.vsp
     get() = this.toFloat().vsp
 
 val Float.vsp
