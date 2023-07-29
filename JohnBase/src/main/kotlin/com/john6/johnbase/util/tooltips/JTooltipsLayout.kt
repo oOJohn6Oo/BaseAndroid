@@ -3,8 +3,10 @@ package com.john6.johnbase.util.tooltips
 import android.app.Activity
 import android.content.Context
 import android.content.res.ColorStateList
+import android.graphics.Color
 import android.graphics.PorterDuff
 import android.graphics.Rect
+import android.graphics.drawable.ColorDrawable
 import android.graphics.drawable.Drawable
 import android.os.Build
 import android.util.AttributeSet
@@ -275,7 +277,13 @@ open class JTooltipsLayout : FrameLayout, Shapeable {
 
 fun JTooltipsLayout.configWhenShowInPopupWindow(popupWindow: PopupWindow){
     popupWindow.contentView = this
-    popupWindow.setBackgroundDrawable(null)
+//    前面在preparePopup方法中，判断了只有当mBackground不为null，
+//    才包装了PopupViewContainer 处理点击 popupWindow外部的时候，会dismiss
+    if (Build.VERSION.SDK_INT < Build.VERSION_CODES.M){
+        popupWindow.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+    }else {
+        popupWindow.setBackgroundDrawable(null)
+    }
     popupWindow.isTouchable = true
     popupWindow.isOutsideTouchable = true
     popupWindow.isFocusable = true
