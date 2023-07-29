@@ -1,5 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:tools="http://schemas.android.com/tools">
+
+    <style name="DialogTheme" parent="Theme.Material3.DayNight.Dialog">
+        <item name="colorPrimary">#0256ee</item>
+        <item name="colorOnPrimary">@android:color/white</item>
+        <item name="colorPrimaryContainer">@android:color/white</item>
+        <item name="colorOnPrimaryContainer">@android:color/white</item>
+    </style>
+
     <style name="AppTheme" parent="Theme.Material3.DynamicColors.DayNight">
         <item name="windowActionBar">false</item>
 <!--        Each key accent color (primary, secondary, and tertiary) -->
@@ -11,6 +19,7 @@
         <item name="colorPrimaryContainer">@android:color/white</item>
         <item name="colorOnPrimaryContainer">@android:color/white</item>
 
+        <item name="android:alertDialogTheme">@style/DialogTheme</item>
         <item name="android:statusBarColor">@android:color/transparent</item>
         <item name="android:navigationBarColor">@android:color/transparent</item>
         <item name="android:windowLayoutInDisplayCutoutMode" tools:targetApi="o_mr1">shortEdges</item>

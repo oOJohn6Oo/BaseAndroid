@@ -3,12 +3,12 @@ apply plugin: 'kotlin-android'
 apply from: 'publish.gradle'
 
 android {
-    compileSdk 33
+    compileSdk 34
     namespace "com.john6.johnbase"
 
     defaultConfig {
         minSdk 16
-        targetSdk 33
+        targetSdk = 34
         versionCode 1
         versionName "1.0"
 

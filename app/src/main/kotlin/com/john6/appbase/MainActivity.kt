@@ -4,9 +4,15 @@ package com.john6.appbase
 
 import android.annotation.SuppressLint
 import android.content.Context
+import android.content.DialogInterface
+import android.content.DialogInterface.OnClickListener
 import android.os.Bundle
+import android.view.Gravity
 import android.view.View
+import android.widget.FrameLayout
+import android.widget.TextView
 import androidx.annotation.StringRes
+import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.FragmentActivity
 import androidx.navigation.NavController
 import androidx.navigation.NavDestination
@@ -14,6 +20,7 @@ import androidx.navigation.findNavController
 import com.google.android.material.color.DynamicColors
 import com.john6.appbase.databinding.ActivityMainBinding
 import com.john6.johnbase.util.InsetsHelper
+import com.john6.johnbase.util.log
 import com.john6.johnbase.util.safeDrawing
 import com.john6.johnbase.util.tooltips.JDefaultTooltips
 import com.john6.johnbase.util.tooltips.TipEdge
@@ -64,6 +71,7 @@ class MainActivity : FragmentActivity() {
             onBackPressedDispatcher.onBackPressed()
         }
         mBinding.titleAttMain.setOnClickListener(this::onTitleClicked)
+        mBinding.titleAttMain.setOnLongClickListener(this::onTitleLongClicked)
         insetsHelper.onInsetsChanged = { insets ->
             val safeContent = insets.safeDrawing()
             mBinding.toolbarAttMain.setPaddingRelative(
@@ -73,6 +81,32 @@ class MainActivity : FragmentActivity() {
                 0
             )
         }
+    }
+
+    private fun onTitleLongClicked(view: View?): Boolean {
+        if (view !is TextView) return false
+        val presetIndex =
+            when ((view.layoutParams as FrameLayout.LayoutParams).gravity) {
+                Gravity.START -> 0
+                Gravity.CENTER -> 1
+                else -> 2
+            }
+        AlertDialog.Builder(this)
+            .setSingleChoiceItems(
+                arrayOf("Start", "Center", "End"),
+                presetIndex
+            ) { p0, selectIndex ->
+                p0.dismiss()
+                val lp = mBinding.titleAttMain.layoutParams as FrameLayout.LayoutParams
+                lp.gravity = when (selectIndex) {
+                    0 -> Gravity.START
+                    1 -> Gravity.CENTER
+                    else -> Gravity.END
+                }
+                mBinding.titleAttMain.layoutParams = lp
+            }
+            .show()
+        return true
     }
 
     private fun onTitleClicked(view: View) {
@@ -86,7 +120,7 @@ class MainActivity : FragmentActivity() {
             showAsPopupAsideView(
                 anchorView = view,
                 marginStart = 16.vdp.toInt(),
-                marginEnd = 16.vdp.toInt(),
+                marginEnd = 32.vdp.toInt(),
                 onTopOfView = false,
             )
         }

@@ -18,17 +18,20 @@ import androidx.annotation.ColorInt
 import androidx.annotation.ColorRes
 import androidx.annotation.DrawableRes
 import androidx.annotation.FloatRange
+import androidx.annotation.IntRange
 import androidx.annotation.Px
 import androidx.annotation.RequiresApi
 import androidx.appcompat.content.res.AppCompatResources
 import androidx.core.content.withStyledAttributes
 import androidx.core.view.doOnNextLayout
+import androidx.core.view.marginStart
 import com.google.android.material.shape.MaterialShapeUtils
 import com.google.android.material.shape.ShapeAppearanceModel
 import com.google.android.material.shape.Shapeable
 import com.john6.johnbase.R
 import com.john6.johnbase.util.getRectInWindow
 import com.john6.johnbase.util.vdp
+import kotlin.math.absoluteValue
 
 
 /**
@@ -347,6 +350,7 @@ fun JTooltipsLayout.showAsPopupAsideView(
     insetLeft = desireMarginStart
     insetRight = desireMarginEnd
 
+    @IntRange(from = 0L)
     val minX = desireMarginStart
     val rectCenterPoint = rectViewInWindow.width() / 2f + rectViewInWindow.left
 
@@ -360,18 +364,16 @@ fun JTooltipsLayout.showAsPopupAsideView(
     measure(widthMeasureSpec, heightMeasureSpec)
 
     val tooltipsContentWidth = measuredWidth - desireMarginStart - desireMarginEnd
+    // Layout 的 x 的最大值
     val maxX = windowWidth - desireMarginStart - desireMarginEnd - tooltipsContentWidth
 
+    // Layout 去除 insetLeft, insetRight 后，中点距离 rectCenterPoint 的距离
+    val diffX = rectCenterPoint - tooltipsContentWidth / 2f
+
     val tooltipsOffsetX: Int = when {
-        rectCenterPoint - tooltipsContentWidth / 2f < minX -> {
-            0
-        }
-        rectCenterPoint - tooltipsContentWidth / 2f > maxX -> {
-            maxX
-        }
-        else -> {
-            (rectCenterPoint - desireMarginStart - tooltipsContentWidth / 2f).toInt()
-        }
+        diffX <= minX -> 0
+        diffX - desireMarginStart >= maxX -> maxX
+        else -> (diffX - desireMarginStart).toInt()
     }
 
     val tooltipsOffsetY: Int = if (onTopOfView) {
@@ -415,13 +417,8 @@ fun JTooltipsLayout.applyTipDrawOffsetByAnchorView(anchorView: View, sameParent:
         else -> false
     }
     val offsetMultiple = when (tipEdge) {
-        TipEdge.edgeTop, TipEdge.edgeStart -> {
-            1f
-        }
-
-        else -> {
-            -1f
-        }
+        TipEdge.edgeTop, TipEdge.edgeStart -> 1f
+        else -> -1f
     }
 
     this.addOnLayoutChangeListener { v, left, top, right, bottom, _, _, _, _ ->

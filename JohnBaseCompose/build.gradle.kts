@@ -6,10 +6,11 @@ apply(from = "publish.gradle")
 
 android {
     namespace = "io.john6.johnbase.compose"
-    compileSdk = 33
+    compileSdk = 34
 
     defaultConfig {
         minSdk = 16
+        targetSdk = 34
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles("consumer-rules.pro")

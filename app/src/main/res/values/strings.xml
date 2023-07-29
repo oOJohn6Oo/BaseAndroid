@@ -2,7 +2,7 @@
     <string name="app_name">AppBase</string>
 
     <string name="nav_back_description">Back</string>
-    <string name="tooltips_fragment_1" translatable="false">Created by John, view more at john6.ml</string>
+    <string name="tooltips_fragment_1" translatable="false">1</string>
     <string name="tooltips_fragment_loading" translatable="false">LoadingHelper delay shows after 500ms and lifecycle-aware</string>
     <string name="tooltips_fragment_compose" translatable="false">InsetsHelper can handle Jetpack Compose as well</string>
     <string name="tooltips_contact_me" translatable="false">Created by John, view more at john6.ml</string>
