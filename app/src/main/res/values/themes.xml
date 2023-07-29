@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <style name="AppTheme" parent="Theme.Material3.DynamicColors.DayNight">
+        <item name="windowActionBar">false</item>
+<!--        Each key accent color (primary, secondary, and tertiary) -->
+<!--        is provided as a group of 4 compatible colors -->
+<!--        with different tones that can be applied for differing emphasis and visual expression,-->
+<!--        and paired for visual contrast.-->
+        <item name="colorPrimary">#0256ee</item>
+        <item name="colorOnPrimary">@android:color/white</item>
+        <item name="colorPrimaryContainer">@android:color/white</item>
+        <item name="colorOnPrimaryContainer">@android:color/white</item>
+
+        <item name="android:statusBarColor">@android:color/transparent</item>
+        <item name="android:navigationBarColor">@android:color/transparent</item>
+        <item name="android:windowLayoutInDisplayCutoutMode" tools:targetApi="o_mr1">shortEdges</item>
+    </style>
+
+
+
+
+
+    <style name="DemoForMaterial2" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <item name="android:statusBarColor">@android:color/transparent</item>
+        <item name="android:navigationBarColor">@android:color/transparent</item>
+        <item name="android:windowLayoutInDisplayCutoutMode" tools:targetApi="o_mr1">shortEdges</item>
+<!--        A primary color is the color displayed most frequently
+            across your app's screens and components.-->
+        <item name="colorPrimary">#0256ee</item>
+        <item name="colorOnPrimary">@android:color/white</item>
+<!--        Your primary color can be used to make a color theme for your app,
+            including dark and light primary color variants.-->
+        <item name="colorPrimaryVariant">#660022</item>
+        <item name="colorSecondary">#eba645</item>
+        <item name="colorOnSecondary">@android:color/black</item>
+        <item name="colorSecondaryVariant">#660022</item>
+        <item name="colorAccent">#eba645</item>
+
+
+<!--        Surface, background, and error colors typically don’t represent brand-->
+
+
+
+<!--        Surface colors affect surfaces of components, such as cards, sheets, and menus.-->
+        <item name="colorSurface">#0256ee</item>
+        <item name="colorOnSurface">@android:color/white</item>
+
+
+<!--        The background color appears behind scrollable content.
+            The baseline background and surface color is #FFFFFF.-->
+        <item name="backgroundColor">@android:color/white</item>
+        <item name="colorOnBackground">@android:color/black</item>
+
+
+<!--        Error color indicates errors in components, such as invalid text in a text field.-->
+<!--        The baseline error color is #B00020.-->
+        <item name="colorError">#B00020</item>
+        <item name="colorOnError">@android:color/white</item>
+    </style>
+</resources>

@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <attr name="tipEdge" format="enum">
+        <enum name="edgeStart" value="1" />
+        <enum name="edgeTop" value="2" />
+        <enum name="edgeEnd" value="3" />
+        <enum name="edgeBottom" value="4" />
+        <enum name="edgeHorizontal" value="5" />
+        <enum name="edgeVertical" value="6" />
+        <enum name="edgeAll" value="7" />
+    </attr>
+    <attr name="tipDrawGravity" format="enum">
+        <enum name="start" value="1" />
+        <enum name="center" value="2" />
+        <enum name="end" value="3" />
+    </attr>
+    <attr name="tipDrawOffset" format="dimension" />
+    <attr name="tipDrawStyle">
+        <enum name="triangle" value="1" />
+        <enum name="roundTriangle" value="2" />
+        <enum name="circle" value="3" />
+        <enum name="defaultLine" value="4" />
+    </attr>
+    <attr name="tipDrawInside" format="boolean" />
+    <attr name="tipDepth" format="dimension" />
+    <attr name="tipWidth" format="dimension" />
+    <attr name="shapeCornerRadius" format="dimension|fraction" />
+
+
+    <declare-styleable name="JTooltipsLayout">
+        <attr name="android:insetLeft" />
+        <attr name="android:insetTop" />
+        <attr name="android:insetRight" />
+        <attr name="android:insetBottom" />
+        <attr name="android:strokeColor" />
+        <attr name="strokeWidth" />
+        <attr name="android:backgroundTint" />
+        <attr name="android:backgroundTintMode" />
+        <attr name="rippleColor" />
+        <attr name="android:elevation" />
+        <attr name="android:background" />
+
+        <attr name="tipEdge" />
+        <attr name="tipDrawGravity" />
+        <attr name="tipDrawOffset" />
+        <attr name="tipDrawStyle" />
+        <attr name="tipDrawInside" />
+        <attr name="tipDepth" />
+        <attr name="tipWidth" />
+        <attr name="shapeCornerRadius" />
+    </declare-styleable>
+
+
+    <declare-styleable name="JDefaultTooltips">
+        <attr name="android:text" />
+        <attr name="android:textColor" format="reference|color" />
+        <attr name="android:textSize" format="dimension" />
+        <attr name="android:drawableStart" format="reference|color" />
+        <attr name="android:drawablePadding" format="dimension" />
+        <attr name="android:src" />
+        <attr name="disableTailIcon" format="boolean" />
+    </declare-styleable>
+
+</resources>

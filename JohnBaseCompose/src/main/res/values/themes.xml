@@ -6,11 +6,13 @@
         <item name="android:enforceNavigationBarContrast" tools:targetApi="q">false</item>
         <item name="android:enforceStatusBarContrast" tools:targetApi="q">false</item>
         <item name="android:windowBackground">@android:color/transparent</item>
-        <item name="android:windowLayoutInDisplayCutoutMode" tools:targetApi="o_mr1">always</item>
     </style>
 
-    <style name="Theme.John.BaseTheme.App">
+    <style name="Theme.John.BaseTheme.DayNight">
         <item name="android:windowLightStatusBar" tools:targetApi="m">true</item>
         <item name="android:windowLightNavigationBar" tools:targetApi="o_mr1">true</item>
+    </style>
+    <style name="Theme.John.BaseTheme.DayNight.AppTheme">
+        <item name="android:windowLayoutInDisplayCutoutMode" tools:targetApi="o_mr1">shortEdges</item>
     </style>
 </resources>

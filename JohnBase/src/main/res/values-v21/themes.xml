@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="defaultJTooltips">
+        <item name="tipDepth">5dp</item>
+        <item name="tipWidth">10dp</item>
+        <item name="tipEdge">edgeBottom</item>
+        <item name="tipDrawGravity">center</item>
+        <item name="tipDrawStyle">roundTriangle</item>
+        <item name="android:backgroundTint">?android:attr/colorPrimary</item>
+        <item name="android:insetBottom">5dp</item>
+    </style>
+</resources>
