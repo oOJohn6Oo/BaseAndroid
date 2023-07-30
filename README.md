@@ -45,7 +45,50 @@ Included in `compose-v*`, used for quickly handle staff related to status bar an
 
 * Include all [InsetsHelper] features.
 
+#### [JTooltips]
+Included in `base-v*`, used for show tooltips easily.
+
+* [JTooltipsLayout] extend from FrameLayout, support custom material edge treatment.
+  
+  | attr | desc | pic |
+  | :-: |  :-: | :-: |
+  | tipEdge | change tip stick positions | todo |
+  | tipDrawGravity | change tip stick draw direction | todo |
+  | tipDrawOffset |  offset tip stick | todo |
+  | tipDrawStyle |  support `triangle`,`roundTriangle`,`circle`,`defaultLine` | todo |
+  | tipDrawInside |  whether tip stick inside or outside view | todo |
+  | tipDepth |  tip stick height | todo |
+  | tipWidth |  tip stick width | todo |
+  | shapeCornerRadius | support fraction and dimension | todo |
+  | android:insetLeft | as the name says | todo |
+  | android:insetTop | as the name says | todo |
+  | android:insetRight | as the name says | todo |
+  | android:insetBottom | as the name says | todo |
+  | android:strokeColor | as the name says | todo |
+  | strokeWidth | as the name says | todo |
+  | android:backgroundTint | as the name says | todo |
+  | android:backgroundTintMode | as the name says | todo |
+  | rippleColor | as the name says | todo |
+  | android:elevation | as the name says | todo |
+  | android:background | as the name says, but affects all the other attrs | todo |
+  
+* [JDefaultTooltips] extends [JTooltipsLayout], have fixed inner layout, used for speed up common requirements.
+> It is a text followed by a divider and close icon by default, can customize using following attrs.
+
+| attr | desc |
+| :- | :- |
+| android:text | as the name says |
+| android:textColor | as the name says |
+| android:textSize | as the name says |
+| android:drawableStart | as the name says |
+| android:drawablePadding | as the name says |
+| android:src | as the name says |
+| disableTailIcon | hide the divider and icon |
+
 [JitPack Icon]: https://jitpack.io/v/oOJohn6Oo/BaseAndroid.svg
-[InsetsHelper]: ./JohnBase/src/main/java/com/john6/johnbase/util/InsetsHelper.kt
-[ProgressHelper]: ./JohnBase/src/main/java/com/john6/johnbase/util/ProgressHelper.kt
-[JohnAppTheme]: ./JohnBaseCompose/src/main/java/io/john6/johnbase/compose/AppTheme.kt
+[InsetsHelper]: ./JohnBase/src/main/kotlin/com/john6/johnbase/util/InsetsHelper.kt
+[ProgressHelper]: ./JohnBase/src/main/kotlin/com/john6/johnbase/util/LoadingHelper.kt
+[JohnAppTheme]: ./JohnBaseCompose/src/main/kotlin/io/john6/johnbase/compose/AppTheme.kt
+[JTooltips]: ./JohnBase/src/main/kotlin/com/john6/johnbase/util/tooltips
+[JTooltipsLayout]: ./JohnBase/src/main/kotlin/com/john6/johnbase/util/tooltips/JTooltipsLayout.kt
+[JDefaultTooltips]: ./JohnBase/src/main/kotlin/com/john6/johnbase/util/tooltips/JDefaultTooltips.kt
