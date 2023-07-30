@@ -26,14 +26,12 @@ import androidx.annotation.RequiresApi
 import androidx.appcompat.content.res.AppCompatResources
 import androidx.core.content.withStyledAttributes
 import androidx.core.view.doOnNextLayout
-import androidx.core.view.marginStart
 import com.google.android.material.shape.MaterialShapeUtils
 import com.google.android.material.shape.ShapeAppearanceModel
 import com.google.android.material.shape.Shapeable
 import com.john6.johnbase.R
 import com.john6.johnbase.util.getRectInWindow
 import com.john6.johnbase.util.vdp
-import kotlin.math.absoluteValue
 
 
 /**
@@ -211,6 +209,16 @@ open class JTooltipsLayout : FrameLayout, Shapeable {
         setBackgroundDrawable(background)
     }
 
+    /**
+     * Update the button's background without changing the background state in [ ]. This should be used when we initially set the background drawable
+     * created by [MaterialButtonHelper].
+     *
+     * @param background Background to set on this button
+     */
+    fun setInternalBackground(background: Drawable?) {
+        super.setBackgroundDrawable(background)
+    }
+
     override fun setBackgroundResource(@DrawableRes backgroundResourceId: Int) {
         var background: Drawable? = null
         if (backgroundResourceId != 0) {
@@ -219,14 +227,16 @@ open class JTooltipsLayout : FrameLayout, Shapeable {
         background?.also { setBackgroundDrawable(it) }
     }
 
-    @Deprecated("As we are using this view for showing tooltips, rewrite is not allowed")
     override fun setBackgroundDrawable(background: Drawable) {
         if (isUsingOriginalBackground()) {
             if (background !== this.background) {
                 // this cause insets couldn't be set programmatically
-//                ceTooltipsHelper.setBackgroundOverwritten()
+                jTooltipsHelper.setBackgroundOverwritten()
                 super.setBackgroundDrawable(background)
             } else {
+                // ViewCompat.setBackgroundTintList() and setBackgroundTintMode() call setBackground() on
+                // the view in API 21, since background state doesn't automatically update in API 21. We
+                // capture this case here, and update our background without replacing it or re-tinting it.
                 getBackground().state = background.state
             }
         } else {

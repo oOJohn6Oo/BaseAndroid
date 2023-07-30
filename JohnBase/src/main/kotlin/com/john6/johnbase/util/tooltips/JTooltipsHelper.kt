@@ -293,7 +293,7 @@ class JTooltipsHelper(
     }
 
     private fun updateBackground() {
-        jTooltipsLayout.background = createBackground()
+        jTooltipsLayout.setInternalBackground(createBackground())
         val materialShapeDrawable = getMaterialShapeDrawable()
         if (materialShapeDrawable != null) {
             materialShapeDrawable.elevation = elevation.toFloat()
