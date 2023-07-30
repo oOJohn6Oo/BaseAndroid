@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="nav_back_description">返回</string>
+    <string name="tooltips_fragment_1" translatable="false">JTooltips 功能展示</string>
+    <string name="tooltips_fragment_loading" translatable="false">LoadingHelper 生命周期感知 + 延时弹窗</string>
+    <string name="tooltips_fragment_compose" translatable="false">InsetsHelper 支持 Jetpack Compose</string>
+    <string name="tooltips_contact_me" translatable="false">John 编写, 访问 john6.ml 查看更多</string>
+    <string name="multiple_position">多角度</string>
+    <string name="multiple_shape">多形状</string>
+</resources>

@@ -1,14 +1,550 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
-    <TextView
-        android:text="one"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
-</androidx.constraintlayout.widget.ConstraintLayout>
+    android:background="?android:attr/colorBackground"
+    android:clipChildren="false"
+    android:clipToPadding="false"
+    android:fillViewport="true"
+    android:overScrollMode="never">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/section_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="24dp"
+            android:text="CEDefaultTooltips"
+            android:textColor="?android:attr/colorPrimary"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/title_item_angle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="24dp"
+            android:text="@string/multiple_position"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/section_button" />
+
+        <com.john6.johnbase.util.tooltips.JDefaultTooltips
+            android:id="@+id/btn_test_1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:insetLeft="5dp"
+            android:insetBottom="0dp"
+            android:text="1"
+            android:textAllCaps="false"
+            app:layout_constraintEnd_toStartOf="@id/btn_test_2"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/title_item_angle"
+            app:tipDepth="5dp"
+            app:tipDrawStyle="triangle"
+            app:tipEdge="edgeStart" />
+
+        <com.john6.johnbase.util.tooltips.JDefaultTooltips
+            android:id="@+id/btn_test_2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:insetRight="5dp"
+            android:insetBottom="0dp"
+            android:text="2"
+            android:textAllCaps="false"
+            app:layout_constraintEnd_toStartOf="@id/btn_test_3"
+            app:layout_constraintStart_toEndOf="@id/btn_test_1"
+            app:layout_constraintTop_toTopOf="@id/btn_test_1"
+            app:tipDepth="5dp"
+            app:tipDrawStyle="triangle"
+            app:tipEdge="edgeEnd" />
+
+        <com.john6.johnbase.util.tooltips.JDefaultTooltips
+            android:id="@+id/btn_test_3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:insetTop="5dp"
+            android:insetBottom="0dp"
+            android:text="3"
+            android:textAllCaps="false"
+            app:layout_constraintBottom_toBottomOf="@id/btn_test_1"
+            app:layout_constraintEnd_toStartOf="@id/btn_test_4"
+            app:layout_constraintStart_toEndOf="@id/btn_test_2"
+            app:tipDepth="5dp"
+            app:tipDrawStyle="triangle"
+            app:tipEdge="edgeTop" />
+
+        <com.john6.johnbase.util.tooltips.JDefaultTooltips
+            android:id="@+id/btn_test_4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:insetBottom="5dp"
+            android:text="4"
+            android:textAllCaps="false"
+            app:layout_constraintEnd_toStartOf="@id/btn_test_5"
+            app:layout_constraintStart_toEndOf="@id/btn_test_3"
+            app:layout_constraintTop_toTopOf="@id/btn_test_1"
+            app:tipDepth="5dp"
+            app:tipDrawStyle="triangle"
+            app:tipEdge="edgeBottom" />
+
+        <com.john6.johnbase.util.tooltips.JDefaultTooltips
+            android:id="@+id/btn_test_5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:insetLeft="5dp"
+            android:insetTop="5dp"
+            android:insetRight="5dp"
+            android:text="5"
+            android:textAllCaps="false"
+            app:layout_constraintBottom_toBottomOf="@id/btn_test_1"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/btn_test_4"
+            app:layout_constraintTop_toTopOf="@id/btn_test_1"
+            app:tipDepth="5dp"
+            app:tipDrawStyle="triangle"
+            app:tipEdge="edgeAll" />
+
+        <TextView
+            android:id="@+id/title_item_shape"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="24dp"
+            android:text="@string/multiple_shape"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/btn_test_1" />
+
+        <com.john6.johnbase.util.tooltips.JDefaultTooltips
+            android:id="@+id/btn_icon_1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:insetBottom="0dp"
+            android:text="6"
+            android:textAllCaps="false"
+            app:iconGravity="textEnd"
+            app:iconSize="24dp"
+            app:iconTint="@android:color/transparent"
+            app:iconTintMode="src_atop"
+            app:layout_constraintEnd_toStartOf="@id/btn_icon_2"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/title_item_shape"
+            app:tipDepth="5dp"
+            app:tipDrawInside="true"
+            app:tipDrawStyle="triangle"
+            app:tipEdge="edgeAll" />
+
+        <com.john6.johnbase.util.tooltips.JDefaultTooltips
+            android:id="@+id/btn_icon_2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:insetBottom="0dp"
+            android:text="7"
+            android:textAllCaps="false"
+            app:iconGravity="textEnd"
+            app:iconSize="24dp"
+            app:iconTint="@android:color/transparent"
+            app:iconTintMode="src_atop"
+            app:layout_constraintEnd_toStartOf="@id/btn_icon_3"
+            app:layout_constraintStart_toEndOf="@id/btn_icon_1"
+            app:layout_constraintTop_toTopOf="@id/btn_icon_1"
+            app:tipDepth="5dp"
+            app:tipDrawInside="true"
+            app:tipDrawStyle="roundTriangle"
+            app:tipEdge="edgeAll"
+            app:tipWidth="10dp" />
+
+        <com.john6.johnbase.util.tooltips.JDefaultTooltips
+            android:id="@+id/btn_icon_3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:insetBottom="0dp"
+            android:text="8"
+            android:textAllCaps="false"
+            app:iconGravity="textEnd"
+            app:iconSize="24dp"
+            app:iconTint="@android:color/transparent"
+            app:iconTintMode="src_atop"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/btn_icon_2"
+            app:layout_constraintTop_toTopOf="@id/btn_icon_1"
+            app:tipDepth="5dp"
+            app:tipDrawInside="true"
+            app:tipDrawStyle="circle"
+            app:tipEdge="edgeAll" />
+
+
+        <TextView
+            android:id="@+id/title_item_tipDrawGravity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="24dp"
+            android:text="tipDrawGravity"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/btn_icon_1" />
+
+        <com.john6.johnbase.util.tooltips.JDefaultTooltips
+            android:id="@+id/btn_test_9"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="12dp"
+            android:insetTop="5dp"
+            android:insetBottom="0dp"
+            android:text="9"
+            app:layout_constraintEnd_toStartOf="@id/btn_test_10"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/title_item_tipDrawGravity"
+            app:tipDepth="5dp"
+            app:tipDrawGravity="start"
+            app:tipDrawInside="false"
+            app:tipDrawStyle="roundTriangle"
+            app:tipEdge="edgeTop"
+            app:tipWidth="10dp" />
+
+        <com.john6.johnbase.util.tooltips.JDefaultTooltips
+            android:id="@+id/btn_test_10"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:insetTop="5dp"
+            android:insetBottom="0dp"
+            android:text="10"
+            app:layout_constraintEnd_toStartOf="@id/btn_test_11"
+            app:layout_constraintStart_toEndOf="@id/btn_test_9"
+            app:layout_constraintTop_toTopOf="@id/btn_test_9"
+            app:tipDepth="5dp"
+
+            app:tipDrawGravity="center"
+            app:tipDrawInside="false"
+            app:tipDrawStyle="roundTriangle"
+            app:tipEdge="edgeTop"
+            app:tipWidth="10dp" />
+
+        <com.john6.johnbase.util.tooltips.JDefaultTooltips
+            android:id="@+id/btn_test_11"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:insetTop="5dp"
+            android:insetBottom="0dp"
+            android:text="11"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/btn_test_10"
+            app:layout_constraintTop_toTopOf="@id/btn_test_9"
+            app:tipDepth="5dp"
+            app:tipDrawGravity="end"
+            app:tipDrawInside="false"
+            app:tipDrawStyle="roundTriangle"
+            app:tipEdge="edgeTop"
+            app:tipWidth="10dp" />
+
+        <TextView
+            android:id="@+id/title_item_tipDrawOffset"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="24dp"
+            android:text="tipDrawOffset"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/btn_test_9" />
+
+        <com.john6.johnbase.util.tooltips.JDefaultTooltips
+            android:id="@+id/btn_test_12"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="12dp"
+            android:insetTop="5dp"
+            android:insetBottom="0dp"
+            android:text="12"
+            app:layout_constraintEnd_toStartOf="@id/btn_test_13"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/title_item_tipDrawOffset"
+            app:tipDepth="5dp"
+            app:tipDrawGravity="start"
+            app:tipDrawInside="false"
+            app:tipDrawOffset="-10dp"
+            app:tipDrawStyle="roundTriangle"
+            app:tipEdge="edgeTop"
+            app:tipWidth="10dp" />
+
+        <com.john6.johnbase.util.tooltips.JDefaultTooltips
+            android:id="@+id/btn_test_13"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:insetTop="5dp"
+            android:insetBottom="0dp"
+            android:text="13"
+            app:layout_constraintEnd_toStartOf="@id/btn_test_14"
+            app:layout_constraintStart_toEndOf="@id/btn_test_12"
+            app:layout_constraintTop_toTopOf="@id/btn_test_12"
+            app:tipDepth="5dp"
+            app:tipDrawGravity="center"
+            app:tipDrawInside="false"
+            app:tipDrawOffset="10dp"
+            app:tipDrawStyle="roundTriangle"
+            app:tipEdge="edgeTop"
+            app:tipWidth="10dp" />
+
+        <com.john6.johnbase.util.tooltips.JDefaultTooltips
+            android:id="@+id/btn_test_14"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:insetTop="5dp"
+            android:insetBottom="0dp"
+            android:text="14"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/btn_test_13"
+            app:layout_constraintTop_toTopOf="@id/btn_test_12"
+            app:tipDepth="5dp"
+            app:tipDrawGravity="end"
+            app:tipDrawInside="false"
+            app:tipDrawOffset="10dp"
+            app:tipDrawStyle="roundTriangle"
+            app:tipEdge="edgeTop"
+            app:tipWidth="10dp" />
+
+        <TextView
+            android:id="@+id/title_item_shapeCornerRadius"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="24dp"
+            android:text="shapeCornerRadius"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/btn_test_12" />
+
+        <com.john6.johnbase.util.tooltips.JDefaultTooltips
+            android:id="@+id/btn_test_15"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="12dp"
+            android:insetTop="5dp"
+            android:insetBottom="0dp"
+            android:text="15"
+            app:layout_constraintEnd_toStartOf="@id/btn_test_16"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/title_item_shapeCornerRadius"
+            app:shapeCornerRadius="0dp"
+            app:tipDepth="5dp"
+            app:tipDrawGravity="start"
+            app:tipDrawInside="false"
+            app:tipDrawStyle="roundTriangle"
+            app:tipEdge="edgeTop"
+            app:tipWidth="10dp" />
+
+        <com.john6.johnbase.util.tooltips.JDefaultTooltips
+            android:id="@+id/btn_test_16"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:insetTop="5dp"
+            android:insetBottom="0dp"
+            android:text="16"
+            app:layout_constraintEnd_toStartOf="@id/btn_test_17"
+            app:layout_constraintStart_toEndOf="@id/btn_test_15"
+            app:layout_constraintTop_toTopOf="@id/btn_test_15"
+            app:shapeCornerRadius="50%"
+            app:tipDepth="5dp"
+            app:tipDrawGravity="center"
+            app:tipDrawInside="false"
+            app:tipDrawStyle="roundTriangle"
+            app:tipEdge="edgeTop"
+            app:tipWidth="10dp" />
+
+        <com.john6.johnbase.util.tooltips.JDefaultTooltips
+            android:id="@+id/btn_test_17"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:insetTop="5dp"
+            android:insetBottom="0dp"
+            android:text="17"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/btn_test_16"
+            app:layout_constraintTop_toTopOf="@id/btn_test_15"
+            app:shapeCornerRadius="12dp"
+            app:tipDepth="5dp"
+            app:tipDrawGravity="end"
+            app:tipDrawInside="false"
+            app:tipDrawStyle="roundTriangle"
+            app:tipEdge="edgeTop"
+            app:tipWidth="10dp" />
+
+        <TextView
+            android:id="@+id/title_item_stroke"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="24dp"
+            android:text="stroke"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/btn_test_15" />
+
+        <com.john6.johnbase.util.tooltips.JDefaultTooltips
+            android:id="@+id/btn_test_18"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="12dp"
+            android:insetTop="5dp"
+            android:insetBottom="0dp"
+            android:strokeColor="?attr/colorOnSurface"
+            android:text="18"
+            app:layout_constraintEnd_toStartOf="@id/btn_test_19"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/title_item_stroke"
+            app:shapeCornerRadius="0dp"
+            app:strokeWidth="1dp"
+            app:tipDepth="5dp"
+            app:tipDrawGravity="start"
+            app:tipDrawInside="false"
+            app:tipDrawStyle="roundTriangle"
+            app:tipEdge="edgeTop"
+            app:tipWidth="10dp" />
+
+        <com.john6.johnbase.util.tooltips.JDefaultTooltips
+            android:id="@+id/btn_test_19"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:insetTop="5dp"
+            android:insetBottom="0dp"
+            android:strokeColor="?attr/colorOnSurface"
+            android:text="19"
+            app:layout_constraintEnd_toStartOf="@id/btn_test_17"
+            app:layout_constraintStart_toEndOf="@id/btn_test_18"
+            app:layout_constraintTop_toTopOf="@id/btn_test_18"
+            app:shapeCornerRadius="50%"
+            app:strokeWidth="1dp"
+            app:tipDepth="5dp"
+            app:tipDrawGravity="center"
+            app:tipDrawInside="false"
+            app:tipDrawStyle="roundTriangle"
+            app:tipEdge="edgeTop"
+            app:tipWidth="10dp" />
+
+        <com.john6.johnbase.util.tooltips.JDefaultTooltips
+            android:id="@+id/btn_test_20"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:insetTop="5dp"
+            android:insetBottom="0dp"
+            android:strokeColor="?attr/colorOnSurface"
+            android:text="20"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/btn_test_19"
+            app:layout_constraintTop_toTopOf="@id/btn_test_18"
+            app:shapeCornerRadius="12dp"
+            app:strokeWidth="1dp"
+            app:tipDepth="5dp"
+            app:tipDrawGravity="end"
+            app:tipDrawInside="false"
+            app:tipDrawStyle="roundTriangle"
+            app:tipEdge="edgeTop"
+            app:tipWidth="10dp" />
+
+
+        <TextView
+            android:id="@+id/section_demo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="24dp"
+            android:text="Demo"
+            android:textColor="?attr/colorPrimary"
+            android:textSize="24sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/btn_test_18" />
+
+        <TextView
+            android:id="@+id/title_item_coupon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="24dp"
+            android:text="Coupon"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/section_demo" />
+
+        <com.john6.johnbase.util.tooltips.JTooltipsLayout
+            android:id="@+id/card_coupon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="12dp"
+            android:layout_marginEnd="24dp"
+            android:backgroundTint="#F7CF47"
+            android:insetBottom="0dp"
+            android:paddingHorizontal="12dp"
+            android:paddingVertical="6dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/title_item_coupon"
+            app:tipDepth="8dp"
+            app:tipDrawGravity="center"
+            app:tipDrawInside="true"
+            app:tipDrawStyle="circle"
+            app:tipEdge="edgeHorizontal">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:maxEms="5"
+                    android:text="DISCOUNT COUPON"
+                    android:textColor="@android:color/white"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="10% OFF"
+                    android:textColor="@android:color/black"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+        </com.john6.johnbase.util.tooltips.JTooltipsLayout>
+
+        <TextView
+            android:id="@+id/title_item_tooltips"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="24dp"
+            android:text="default Tooltips"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/card_coupon" />
+
+        <com.john6.johnbase.util.tooltips.JDefaultTooltips
+            android:id="@+id/tooltips_1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="24dp"
+            android:text="Default"
+            app:disableTailIcon="true"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/title_item_tooltips" />
+
+        <com.john6.johnbase.util.tooltips.JDefaultTooltips
+            android:id="@+id/tooltips_2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="24dp"
+            android:text="Default"
+            app:layout_constraintStart_toEndOf="@id/tooltips_1"
+            app:layout_constraintTop_toBottomOf="@id/title_item_tooltips" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>
