@@ -4,6 +4,8 @@
 > `compose-v*` contains common utils for Android Compose.</br>
 > `v*` contains both.</br>
 
+<img src="https://github.com/oOJohn6Oo/BaseAndroid/assets/24718357/3e4d5c27-35fe-40da-a1b0-592c9a5f16d5" width="400" />
+
 ### ~~Using GitHub Actions to push Packages~~
 
 Deprecated: since GitHub Packages do not allow public access.
@@ -46,44 +48,47 @@ Included in `compose-v*`, used for quickly handle staff related to status bar an
 * Include all [InsetsHelper] features.
 
 #### [JTooltips]
-Included in `base-v*`, used for show tooltips easily.
+> Included in `base-v*`, used for show tooltips easily.<br>
+> With extension function we can auto calculate view position and tip stick offset
+
+<img src="https://github.com/oOJohn6Oo/BaseAndroid/assets/24718357/4852c7c3-8409-454d-b936-18d90ac8b5c8" width="400" />
 
 * [JTooltipsLayout] extend from FrameLayout, support custom material edge treatment.
-  
-  | attr | desc | pic |
-  | :-: |  :-: | :-: |
-  | tipEdge | change tip stick positions | todo |
-  | tipDrawGravity | change tip stick draw direction | todo |
-  | tipDrawOffset |  offset tip stick | todo |
-  | tipDrawStyle |  support `triangle`,`roundTriangle`,`circle`,`defaultLine` | todo |
-  | tipDrawInside |  whether tip stick inside or outside view | todo |
-  | tipDepth |  tip stick height | todo |
-  | tipWidth |  tip stick width | todo |
-  | shapeCornerRadius | support fraction and dimension | todo |
-  | android:insetLeft | as the name says | todo |
-  | android:insetTop | as the name says | todo |
-  | android:insetRight | as the name says | todo |
-  | android:insetBottom | as the name says | todo |
-  | android:strokeColor | as the name says | todo |
-  | strokeWidth | as the name says | todo |
-  | android:backgroundTint | as the name says | todo |
-  | android:backgroundTintMode | as the name says | todo |
-  | rippleColor | as the name says | todo |
-  | android:elevation | as the name says | todo |
-  | android:background | as the name says, but affects all the other attrs | todo |
+
+  | attr | desc |
+  | :- |  :- |
+  | tipEdge | change tip stick positions, support `edgeStart`,`edgeTop`,`edgeEnd`,`edgeBottom`,`edgeHorizontal`,`edgeVertical`,`edgeAll` |
+  | tipDrawGravity | change tip stick draw direction, support `start`,`center`,`end` |
+  | tipDrawOffset |  offset tip stick |
+  | tipDrawStyle |  support `triangle`,`roundTriangle`,`circle`,`defaultLine` |
+  | tipDrawInside |  whether tip stick inside or outside view |
+  | tipDepth |  tip stick height |
+  | tipWidth |  tip stick width |
+  | shapeCornerRadius | support fraction and dimension |
+  | android:insetLeft | as the name says |
+  | android:insetTop | as the name says |
+  | android:insetRight | as the name says |
+  | android:insetBottom | as the name says |
+  | android:strokeColor | as the name says |
+  | strokeWidth | as the name says |
+  | android:backgroundTint | as the name says |
+  | android:backgroundTintMode | as the name says |
+  | rippleColor | as the name says |
+  | android:elevation | as the name says |
+  | android:background | as the name says, but affects all the other background related attrs |
   
 * [JDefaultTooltips] extends [JTooltipsLayout], have fixed inner layout, used for speed up common requirements.
-> It is a text followed by a divider and close icon by default, can customize using following attrs.
+  > It is a text followed by a divider and close icon by default, can customize using following attrs.
 
-| attr | desc |
-| :- | :- |
-| android:text | as the name says |
-| android:textColor | as the name says |
-| android:textSize | as the name says |
-| android:drawableStart | as the name says |
-| android:drawablePadding | as the name says |
-| android:src | as the name says |
-| disableTailIcon | hide the divider and icon |
+  | attr | desc |
+  | :- | :- |
+  | android:text | as the name says |
+  | android:textColor | as the name says |
+  | android:textSize | as the name says |
+  | android:drawableStart | as the name says |
+  | android:drawablePadding | as the name says |
+  | android:src | as the name says |
+  | disableTailIcon | hide the divider and icon |
 
 [JitPack Icon]: https://jitpack.io/v/oOJohn6Oo/BaseAndroid.svg
 [InsetsHelper]: ./JohnBase/src/main/kotlin/com/john6/johnbase/util/InsetsHelper.kt
