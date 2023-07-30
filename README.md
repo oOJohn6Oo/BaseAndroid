@@ -51,7 +51,7 @@ Included in `compose-v*`, used for quickly handle staff related to status bar an
 > Included in `base-v*`, used for show tooltips easily.<br>
 > With extension function we can auto calculate view position and tip stick offset
 
-<img src="https://github.com/oOJohn6Oo/BaseAndroid/assets/24718357/4852c7c3-8409-454d-b936-18d90ac8b5c8" width="400" />
+<img src="https://github.com/oOJohn6Oo/BaseAndroid/assets/24718357/86464dd1-fc60-47c1-9210-e867a83a3f61" width="400" />
 
 * [JTooltipsLayout] extend from FrameLayout, support custom material edge treatment.
 
