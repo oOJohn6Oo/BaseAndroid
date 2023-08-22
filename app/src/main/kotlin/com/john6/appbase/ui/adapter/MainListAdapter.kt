@@ -2,6 +2,7 @@ package com.john6.appbase.ui.adapter
 
 import android.annotation.SuppressLint
 import android.app.Application
+import android.content.res.TypedArray
 import android.view.ViewGroup
 import android.view.ViewGroup.LayoutParams.MATCH_PARENT
 import android.view.ViewGroup.LayoutParams.WRAP_CONTENT
@@ -10,6 +11,7 @@ import android.view.animation.AnimationUtils
 import android.widget.TextView
 import androidx.annotation.AnimRes
 import androidx.annotation.Size
+import androidx.appcompat.view.ContextThemeWrapper
 import androidx.core.view.setPadding
 import androidx.navigation.NavDestination
 import androidx.navigation.NavOptions
@@ -18,6 +20,7 @@ import androidx.navigation.findNavController
 import androidx.navigation.navOptions
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.Adapter
+import com.john6.appbase.R
 import com.john6.appbase.app
 import com.john6.johnbase.util.getAttrResId
 import com.john6.johnbase.util.getSystemAttrResId
@@ -49,9 +52,48 @@ class MainListAdapter : Adapter<RecyclerView.ViewHolder>() {
         val itemData = dataList[position]
         itemView.text = itemData.label
         itemView.setOnClickListener {
-            it.findNavController().navigate(itemData.id)
+            it.findNavController().navigate(itemData.id, null, navOptionWithSystemActivityAnimation)
         }
     }
 
     override fun getItemCount() = dataList.size
+}
+
+/**
+ * 获取系统默认的 Activity 动画
+ */
+@Suppress("ResourceType", "unused")
+@get:Size(4)
+val systemDefaultActivityAnimation by lazy {
+    val windowAnimation = app.theme.obtainStyledAttributes(intArrayOf(android.R.attr.windowAnimationStyle))
+    val windowRes: Int = windowAnimation.getResourceId(0, 0)
+    val activityAnimation = app.theme.obtainStyledAttributes(
+        windowRes,
+        intArrayOf(
+            android.R.attr.activityOpenEnterAnimation,
+            android.R.attr.activityOpenExitAnimation,
+            android.R.attr.activityCloseEnterAnimation,
+            android.R.attr.activityCloseExitAnimation
+        )
+    )
+    intArrayOf(
+        activityAnimation.getResourceId(0, 0),
+        activityAnimation.getResourceId(1, 0),
+        activityAnimation.getResourceId(2, 0),
+        activityAnimation.getResourceId(3, 0),
+    )
+}
+
+/**
+ * 带有系统 Activity 动画的 [NavOptions]
+ */
+val navOptionWithSystemActivityAnimation by lazy {
+    navOptions {
+        anim {
+            enter = systemDefaultActivityAnimation[0]
+            exit = systemDefaultActivityAnimation[1]
+            popEnter = systemDefaultActivityAnimation[2]
+            popExit = systemDefaultActivityAnimation[3]
+        }
+    }
 }
