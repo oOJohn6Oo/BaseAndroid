@@ -3,4 +3,10 @@
         <item name="android:windowLightStatusBar" tools:targetApi="m">false</item>
         <item name="android:windowLightNavigationBar" tools:targetApi="o_mr1">false</item>
     </style>
+    <style name="JPickerModalBottomSheetDialog" parent="JBasePickerModalBottomSheetDialog">
+        <item name="android:colorBackground">@android:color/black</item>
+        <item name="colorOnBackground">@android:color/white</item>
+        <item name="colorSurface">@android:color/black</item>
+        <item name="colorOnSurface">@android:color/white</item>
+    </style>
 </resources>

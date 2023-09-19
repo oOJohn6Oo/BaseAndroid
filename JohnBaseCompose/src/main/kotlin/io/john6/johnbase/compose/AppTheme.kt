@@ -8,13 +8,20 @@ import android.os.Build
 import android.provider.Settings
 import android.view.Window
 import androidx.compose.foundation.isSystemInDarkTheme
+import androidx.compose.foundation.layout.WindowInsets
+import androidx.compose.foundation.layout.WindowInsetsSides
+import androidx.compose.foundation.layout.only
+import androidx.compose.foundation.layout.safeDrawing
+import androidx.compose.foundation.layout.windowInsetsPadding
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material.ElevationOverlay
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Shapes
 import androidx.compose.material.darkColors
 import androidx.compose.material.lightColors
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.toArgb
 import androidx.compose.ui.platform.LocalConfiguration
@@ -80,6 +87,7 @@ val MaterialTheme.spaceMedium:Dp
 val MaterialTheme.spaceLarge:Dp
     get() = 16.dp
 
+@Suppress("PrivateApi")
 private val isMiUI by lazy {
     val version = try {
         val systemProperties = Class.forName("android.os.SystemProperties")
@@ -90,7 +98,6 @@ private val isMiUI by lazy {
     }
     version.isNotBlank()
 }
-
 
 /**
  * 根据[androidx.core.graphics.Insets]的具体值判断是否为手势导航

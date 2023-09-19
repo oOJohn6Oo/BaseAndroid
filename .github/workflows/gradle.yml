@@ -27,8 +27,8 @@ jobs:
         TOKEN: ${{ github.token }}
       run: |
         module=""
-        if [[ "${{github.ref_name}}" == *"base-v"* ]]; then module=":JohnBase"; fi
-        if [[ "${{github.ref_name}}" == *"compose-v"* ]]; then module=":JohnBaseCompose"; fi
+        if [[ "${{github.ref_name}}" == *"base-"* ]]; then module=":JohnBase"; fi
+        if [[ "${{github.ref_name}}" == *"compose-"* ]]; then module=":JohnBaseCompose"; fi
         echo desire build module \'${module}\'
         if [ -z $module ]; then
           echo "module not determined, exit"

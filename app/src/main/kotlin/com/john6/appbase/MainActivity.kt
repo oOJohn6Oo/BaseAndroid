@@ -7,6 +7,7 @@ import android.content.Context
 import android.content.DialogInterface
 import android.content.DialogInterface.OnClickListener
 import android.os.Bundle
+import android.text.TextPaint
 import android.view.Gravity
 import android.view.View
 import android.widget.FrameLayout

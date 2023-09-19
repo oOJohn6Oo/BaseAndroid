@@ -6,12 +6,11 @@ plugins {
 apply(from = "publish.gradle")
 
 android {
-    namespace = "io.john6.johnbase.compose"
+    namespace = "io.john6.johnbase.jwheelpicker"
     compileSdk = 34
 
     defaultConfig {
         minSdk = 21
-
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles("consumer-rules.pro")
     }
@@ -42,8 +41,8 @@ android {
 }
 
 dependencies {
-    api("androidx.appcompat:appcompat:1.6.1")
-    api("androidx.compose.material:material:1.5.1")
-    api("androidx.core:core-ktx:1.12.0")
-    api("com.google.android.material:material:1.9.0")
+    implementation("androidx.compose.material:material:1.5.1")
+    implementation("androidx.appcompat:appcompat:1.6.1")
+    api("com.github.oOJohn6Oo.BaseAndroid:john-base-compose:1.0.4")
+//    implementation(project(":JohnBaseCompose"))
 }
