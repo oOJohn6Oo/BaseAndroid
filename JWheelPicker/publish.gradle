@@ -44,8 +44,8 @@ afterEvaluate {
             JohnBaseCompose(MavenPublication) {
                 from components.release
                 groupId = 'com.github.john6'
-                artifactId = 'wheel-picker'
-                version = '0.1'
+                artifactId = 'j-wheel-picker'
+                version = '1.0'
             }
         }
     }

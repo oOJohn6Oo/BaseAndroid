@@ -3,7 +3,7 @@ plugins {
     id("kotlin-parcelize")
     id("org.jetbrains.kotlin.android")
 }
-//apply(from = "publish.gradle")
+apply(from = "publish.gradle")
 
 android {
     namespace = "io.john6.johnbase.jwheelpicker"
@@ -42,6 +42,5 @@ android {
 
 dependencies {
     implementation("androidx.compose.material:material:1.5.1")
-//    api("com.github.oOJohn6Oo.BaseAndroid:john-base-compose:1.0.4")
-    api(project(":JohnBaseCompose"))
+    api("com.github.oOJohn6Oo.BaseAndroid:john-base-compose:1.0.5")
 }
