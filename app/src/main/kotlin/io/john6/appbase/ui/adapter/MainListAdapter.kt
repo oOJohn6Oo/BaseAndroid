@@ -1,4 +1,4 @@
-package com.john6.appbase.ui.adapter
+package io.john6.appbase.ui.adapter
 
 import android.annotation.SuppressLint
 import android.view.ViewGroup
@@ -13,7 +13,7 @@ import androidx.navigation.findNavController
 import androidx.navigation.navOptions
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.Adapter
-import com.john6.appbase.app
+import io.john6.appbase.app
 import io.john6.johnbase.util.getAttrResId
 import io.john6.johnbase.util.vdp
 

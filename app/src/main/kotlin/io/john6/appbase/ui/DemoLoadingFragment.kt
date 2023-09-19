@@ -1,4 +1,4 @@
-package com.john6.appbase.ui
+package io.john6.appbase.ui
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -8,7 +8,7 @@ import android.widget.Toast
 import androidx.core.view.WindowInsetsCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
-import com.john6.appbase.databinding.FragmentDemoLoadingBinding
+import io.john6.appbase.databinding.FragmentDemoLoadingBinding
 import io.john6.johnbase.util.InsetsHelper
 import io.john6.johnbase.util.LoadingHelper
 import io.john6.johnbase.util.safeDrawing

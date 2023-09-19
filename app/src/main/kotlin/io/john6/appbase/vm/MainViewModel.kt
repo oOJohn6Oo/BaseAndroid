@@ -1,11 +1,11 @@
-package com.john6.appbase.vm
+package io.john6.appbase.vm
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.navigation.NavController
 import androidx.navigation.NavDestination
-import com.john6.appbase.R
+import io.john6.appbase.R
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch

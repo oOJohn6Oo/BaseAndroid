@@ -1,6 +1,6 @@
 @file:Suppress("UNUSED_PARAMETER")
 
-package com.john6.appbase
+package io.john6.appbase
 
 import android.annotation.SuppressLint
 import android.content.Context
@@ -16,7 +16,7 @@ import androidx.navigation.NavController
 import androidx.navigation.NavDestination
 import androidx.navigation.findNavController
 import com.google.android.material.color.DynamicColors
-import com.john6.appbase.databinding.ActivityMainBinding
+import io.john6.appbase.databinding.ActivityMainBinding
 import io.john6.johnbase.util.InsetsHelper
 import io.john6.johnbase.util.safeDrawing
 import io.john6.johnbase.util.tooltips.JDefaultTooltips

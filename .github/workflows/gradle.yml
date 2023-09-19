@@ -3,7 +3,7 @@ name: Package with Gradle
 on:
   push:
     tags: 
-      - "*v*"
+      - "*ban_this_for_now*"
 
 jobs:
   build:

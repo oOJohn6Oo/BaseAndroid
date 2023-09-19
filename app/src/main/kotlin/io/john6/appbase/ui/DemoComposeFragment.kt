@@ -1,4 +1,4 @@
-package com.john6.appbase.ui
+package io.john6.appbase.ui
 
 import android.os.Build
 import android.os.Bundle

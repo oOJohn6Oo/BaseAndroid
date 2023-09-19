@@ -1,4 +1,4 @@
-package com.john6.appbase.ui
+package io.john6.appbase.ui
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -8,9 +8,9 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.NavDestination
 import androidx.navigation.fragment.findNavController
-import com.john6.appbase.databinding.FragmentMainBinding
-import com.john6.appbase.ui.adapter.MainListAdapter
-import com.john6.appbase.vm.MainViewModel
+import io.john6.appbase.databinding.FragmentMainBinding
+import io.john6.appbase.ui.adapter.MainListAdapter
+import io.john6.appbase.vm.MainViewModel
 import io.john6.johnbase.util.InsetsHelper
 import io.john6.johnbase.util.safeDrawing
 

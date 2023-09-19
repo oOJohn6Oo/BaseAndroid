@@ -7,19 +7,19 @@
 
     <fragment
         android:id="@+id/mainFragment"
-        android:name="com.john6.appbase.ui.MainFragment"
+        android:name="io.john6.appbase.ui.MainFragment"
         tools:layout="@layout/fragment_main"
         android:label="@string/app_name" />
     <fragment
         android:id="@+id/demo1Fragment"
-        android:name="com.john6.appbase.ui.Demo1Fragment"
+        android:name="io.john6.appbase.ui.Demo1Fragment"
         android:label="Demo1Fragment" />
     <fragment
         android:id="@+id/demo2LoadingFragment"
-        android:name="com.john6.appbase.ui.DemoLoadingFragment"
+        android:name="io.john6.appbase.ui.DemoLoadingFragment"
         android:label="DemoLoading" />
     <fragment
         android:id="@+id/demo3ComposeFragment"
-        android:name="com.john6.appbase.ui.DemoComposeFragment"
+        android:name="io.john6.appbase.ui.DemoComposeFragment"
         android:label="DemoCompose" />
 </navigation>

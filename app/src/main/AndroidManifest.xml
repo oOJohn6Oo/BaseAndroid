@@ -15,7 +15,7 @@
         tools:targetApi="tiramisu">
         <activity
             android:configChanges="screenLayout|screenSize|orientation|keyboardHidden|keyboard|navigation"
-            android:name=".MainActivity"
+            android:name="io.john6.appbase.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

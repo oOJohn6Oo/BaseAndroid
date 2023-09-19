@@ -5,10 +5,10 @@ plugins {
 
 android {
     compileSdk 34
-    namespace "com.john6.appbase"
+    namespace "io.john6.appbase"
 
     defaultConfig {
-        applicationId "com.john6.appbase"
+        applicationId "io.john6.appbase"
         minSdk 21
         targetSdk 34
         versionCode 1
