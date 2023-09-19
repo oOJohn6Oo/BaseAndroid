@@ -4,10 +4,7 @@ package com.john6.appbase
 
 import android.annotation.SuppressLint
 import android.content.Context
-import android.content.DialogInterface
-import android.content.DialogInterface.OnClickListener
 import android.os.Bundle
-import android.text.TextPaint
 import android.view.Gravity
 import android.view.View
 import android.widget.FrameLayout
@@ -20,14 +17,13 @@ import androidx.navigation.NavDestination
 import androidx.navigation.findNavController
 import com.google.android.material.color.DynamicColors
 import com.john6.appbase.databinding.ActivityMainBinding
-import com.john6.johnbase.util.InsetsHelper
-import com.john6.johnbase.util.log
-import com.john6.johnbase.util.safeDrawing
-import com.john6.johnbase.util.tooltips.JDefaultTooltips
-import com.john6.johnbase.util.tooltips.TipEdge
-import com.john6.johnbase.util.tooltips.showAsPopupAsideView
-import com.john6.johnbase.util.vdp
-import com.john6.johnbase.util.visible
+import io.john6.johnbase.util.InsetsHelper
+import io.john6.johnbase.util.safeDrawing
+import io.john6.johnbase.util.tooltips.JDefaultTooltips
+import io.john6.johnbase.util.tooltips.TipEdge
+import io.john6.johnbase.util.tooltips.showAsPopupAsideView
+import io.john6.johnbase.util.vdp
+import io.john6.johnbase.util.visible
 
 @SuppressLint("StaticFieldLeak")
 lateinit var app: Context

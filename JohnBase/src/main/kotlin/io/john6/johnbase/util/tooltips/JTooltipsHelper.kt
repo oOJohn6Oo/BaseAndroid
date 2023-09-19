@@ -1,4 +1,4 @@
-package com.john6.johnbase.util.tooltips
+package io.john6.johnbase.util.tooltips
 
 import android.content.Context
 import android.content.res.ColorStateList
@@ -18,22 +18,24 @@ import androidx.core.graphics.drawable.DrawableCompat
 import androidx.core.view.ViewCompat
 import com.google.android.material.color.MaterialColors
 import com.google.android.material.shape.*
-import com.john6.johnbase.R
-import com.john6.johnbase.util.tooltips.TipDrawGravity.Companion.drawGravityCenter
-import com.john6.johnbase.util.tooltips.TipDrawGravity.Companion.drawGravityEnd
-import com.john6.johnbase.util.tooltips.TipDrawGravity.Companion.drawGravityStart
-import com.john6.johnbase.util.tooltips.TipDrawStyle.Companion.styleCircle
-import com.john6.johnbase.util.tooltips.TipDrawStyle.Companion.styleDefault
-import com.john6.johnbase.util.tooltips.TipDrawStyle.Companion.styleRoundTriangle
-import com.john6.johnbase.util.tooltips.TipDrawStyle.Companion.styleTriangle
-import com.john6.johnbase.util.tooltips.TipEdge.Companion.edgeAll
-import com.john6.johnbase.util.tooltips.TipEdge.Companion.edgeBottom
-import com.john6.johnbase.util.tooltips.TipEdge.Companion.edgeEnd
-import com.john6.johnbase.util.tooltips.TipEdge.Companion.edgeHorizontal
-import com.john6.johnbase.util.tooltips.TipEdge.Companion.edgeStart
-import com.john6.johnbase.util.tooltips.TipEdge.Companion.edgeTop
-import com.john6.johnbase.util.tooltips.TipEdge.Companion.edgeVertical
-import com.john6.johnbase.util.vdp
+import io.john6.johnbase.R
+import io.john6.johnbase.util.tooltips.TipDrawGravity.Companion.drawGravityCenter
+import io.john6.johnbase.util.tooltips.TipDrawGravity.Companion.drawGravityEnd
+import io.john6.johnbase.util.tooltips.TipDrawGravity.Companion.drawGravityStart
+import io.john6.johnbase.util.tooltips.TipDrawStyle.Companion.styleCircle
+import io.john6.johnbase.util.tooltips.TipDrawStyle.Companion.styleDefault
+import io.john6.johnbase.util.tooltips.TipDrawStyle.Companion.styleRoundTriangle
+import io.john6.johnbase.util.tooltips.TipDrawStyle.Companion.styleTriangle
+import io.john6.johnbase.util.tooltips.TipEdge.Companion.edgeAll
+import io.john6.johnbase.util.tooltips.TipEdge.Companion.edgeBottom
+import io.john6.johnbase.util.tooltips.TipEdge.Companion.edgeEnd
+import io.john6.johnbase.util.tooltips.TipEdge.Companion.edgeHorizontal
+import io.john6.johnbase.util.tooltips.TipEdge.Companion.edgeStart
+import io.john6.johnbase.util.tooltips.TipEdge.Companion.edgeTop
+import io.john6.johnbase.util.tooltips.TipEdge.Companion.edgeVertical
+import io.john6.johnbase.util.tooltips.BezierTriangleEdgeTreatment
+import io.john6.johnbase.util.tooltips.CircleEdgeTreatment
+import io.john6.johnbase.util.vdp
 
 
 /**

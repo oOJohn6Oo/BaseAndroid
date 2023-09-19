@@ -22,7 +22,7 @@ But I will still publish on it.
 
 #### [InsetsHelper]
 
-Included in `base-v*`, used for handling WindowInsets.
+Included in `base-*`, used for handling WindowInsets.
 
 * LifeCycle aware, auto release when activity destroyed.
 * Auto handle WindowInsets.
@@ -35,7 +35,7 @@ Usage:
 https://github.com/oOJohn6Oo/BaseAndroid/blob/0c6dc5d4c24ed979a06dc536311a592a4f464473/JohnBase/src/main/java/com/john6/johnbase/util/InsetsHelper.kt#L31-L43
 
 #### [ProgressHelper]
-Included in `base-v*`, used for show normal prompt.
+Included in `base-*`, used for show normal prompt.
 
 * Support delay trigger.
 * LifeCycle aware, auto release when activity destroyed.
@@ -43,12 +43,12 @@ Included in `base-v*`, used for show normal prompt.
 
 #### [JohnAppTheme]
 
-Included in `compose-v*`, used for quickly handle staff related to status bar and navigation bar.
+Included in `compose-*`, used for quickly handle staff related to status bar and navigation bar.
 
 * Include all [InsetsHelper] features.
 
 #### [JTooltips]
-> Included in `base-v*`, used for show tooltips easily.<br>
+> Included in `base-*`, used for show tooltips easily.<br>
 > With extension function we can auto calculate view position and tip stick offset
 
 <img src="https://github.com/oOJohn6Oo/BaseAndroid/assets/24718357/86464dd1-fc60-47c1-9210-e867a83a3f61" width="400" />
@@ -90,10 +90,21 @@ Included in `compose-v*`, used for quickly handle staff related to status bar an
   | android:src | as the name says |
   | disableTailIcon | hide the divider and icon |
 
+#### [JWheelPicker]
+
+* iOS style wheel picker
+* For single wheel picker, use [JSinglePickerDialogFragment], need to pass List<T>
+* For multiple wheel picker, use [JMultiplePickerDialogFragment], need to implement your own [IMultipleJPickerAdapter]
+
+
 [JitPack Icon]: https://jitpack.io/v/oOJohn6Oo/BaseAndroid.svg
-[InsetsHelper]: ./JohnBase/src/main/kotlin/com/john6/johnbase/util/InsetsHelper.kt
-[ProgressHelper]: ./JohnBase/src/main/kotlin/com/john6/johnbase/util/LoadingHelper.kt
+[InsetsHelper]: ./JohnBase/src/main/kotlin/io/john6/johnbase/util/InsetsHelper.kt
+[ProgressHelper]: ./JohnBase/src/main/kotlin/io/john6/johnbase/util/LoadingHelper.kt
 [JohnAppTheme]: ./JohnBaseCompose/src/main/kotlin/io/john6/johnbase/compose/AppTheme.kt
-[JTooltips]: ./JohnBase/src/main/kotlin/com/john6/johnbase/util/tooltips
-[JTooltipsLayout]: ./JohnBase/src/main/kotlin/com/john6/johnbase/util/tooltips/JTooltipsLayout.kt
-[JDefaultTooltips]: ./JohnBase/src/main/kotlin/com/john6/johnbase/util/tooltips/JDefaultTooltips.kt
+[JTooltips]: ./JohnBase/src/main/kotlin/io/john6/johnbase/util/tooltips
+[JTooltipsLayout]: ./JohnBase/src/main/kotlin/io/john6/johnbase/util/tooltips/JTooltipsLayout.kt
+[JDefaultTooltips]: ./JohnBase/src/main/kotlin/io/john6/johnbase/util/tooltips/JDefaultTooltips.kt
+[JWheelPicker]: ./JWheelPicker/src/main/kotlin/io/john6/johnbase/compose/picker/JWheelPicker.kt
+[JSinglePickerDialogFragment]: ./JWheelPicker/src/main/kotlin/io/john6/johnbase/compose/picker/dialog/single/JSinglePickerDialogFragment.kt
+[JMultiplePickerDialogFragment]: ./JWheelPicker/src/main/kotlin/io/john6/johnbase/compose/picker/dialog/multiple/JMultiplePickerDialogFragment.kt
+[IMultipleJPickerAdapter]: ./JWheelPicker/src/main/kotlin/io/john6/johnbase/compose/picker/dialog/multiple/IMultipleJPickerAdapter.kt

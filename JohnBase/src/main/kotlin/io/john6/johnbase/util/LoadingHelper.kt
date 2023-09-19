@@ -1,6 +1,6 @@
 @file:Suppress("DEPRECATION")
 
-package com.john6.johnbase.util
+package io.john6.johnbase.util
 
 
 import android.app.ProgressDialog

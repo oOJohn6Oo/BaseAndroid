@@ -32,6 +32,22 @@ import kotlinx.coroutines.launch
 
 /**
  * DialogFragment for custom multiple column picker
+ *
+ * Example to use
+ * ```kotlin
+ * JMultiplePickerDialogFragment.show(
+ *     parentFragmentManager,
+ *     requiredData = JMultiPickerDialogData(
+ *         title = 0 to "MultiplePicker",
+ *         overlayStyle = JWheelPickerHelper.overlayStyleOvalRectangle,
+ *         adapterClass = IMultipleJPickerAdapter.testAdapter::class.java
+ *     ),
+ * )
+ * ```
+ *
+ * * onSubmit 结果会以 [FragmentManager.setFragmentResult] 的方式返回，key 为 "result", value 为 [JWheelPickerItemInfo] ParcelableArray
+ *
+ *
  */
 class JMultiplePickerDialogFragment : JBasePickerDialogFragment() {
     private lateinit var mViewModel: JMultiplePickerViewModel

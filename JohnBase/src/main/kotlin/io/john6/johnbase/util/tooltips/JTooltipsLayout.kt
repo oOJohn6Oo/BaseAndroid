@@ -1,4 +1,4 @@
-package com.john6.johnbase.util.tooltips
+package io.john6.johnbase.util.tooltips
 
 import android.app.Activity
 import android.content.Context
@@ -29,9 +29,9 @@ import androidx.core.view.doOnNextLayout
 import com.google.android.material.shape.MaterialShapeUtils
 import com.google.android.material.shape.ShapeAppearanceModel
 import com.google.android.material.shape.Shapeable
-import com.john6.johnbase.R
-import com.john6.johnbase.util.getRectInWindow
-import com.john6.johnbase.util.vdp
+import io.john6.johnbase.R
+import io.john6.johnbase.util.getRectInWindow
+import io.john6.johnbase.util.vdp
 
 
 /**

@@ -1,6 +1,6 @@
 @file:Suppress("unused")
 
-package com.john6.johnbase.util
+package io.john6.johnbase.util
 
 import android.animation.ObjectAnimator
 import android.content.Context
@@ -23,12 +23,9 @@ import android.view.inputmethod.InputMethodManager
 import androidx.annotation.AttrRes
 import androidx.annotation.IntRange
 import androidx.appcompat.view.ContextThemeWrapper
-import androidx.appcompat.widget.ThemeUtils
 import androidx.core.content.ContextCompat
-import androidx.core.view.ViewCompat
 import androidx.core.view.WindowCompat
 import androidx.core.view.WindowInsetsCompat
-import androidx.lifecycle.DefaultLifecycleObserver
 import java.lang.reflect.ParameterizedType
 
 //<editor-fold desc="Must Have">

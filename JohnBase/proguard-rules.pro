@@ -22,5 +22,3 @@
 -dontwarn androidx.viewbinding.**
 -keep class androidx.viewbinding.** { *; }
 -keep class * extends androidx.viewbinding.ViewBinding {*;}
-
--keep class * extends com.john6.johnbase.base.BaseViewHolder{*;}

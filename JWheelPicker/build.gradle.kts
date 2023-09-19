@@ -42,7 +42,6 @@ android {
 
 dependencies {
     implementation("androidx.compose.material:material:1.5.1")
-    implementation("androidx.appcompat:appcompat:1.6.1")
     api("com.github.oOJohn6Oo.BaseAndroid:john-base-compose:1.0.4")
 //    implementation(project(":JohnBaseCompose"))
 }

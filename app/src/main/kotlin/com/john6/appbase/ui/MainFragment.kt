@@ -11,8 +11,8 @@ import androidx.navigation.fragment.findNavController
 import com.john6.appbase.databinding.FragmentMainBinding
 import com.john6.appbase.ui.adapter.MainListAdapter
 import com.john6.appbase.vm.MainViewModel
-import com.john6.johnbase.util.InsetsHelper
-import com.john6.johnbase.util.safeDrawing
+import io.john6.johnbase.util.InsetsHelper
+import io.john6.johnbase.util.safeDrawing
 
 class MainFragment : Fragment() {
     private val mViewModel by viewModels<MainViewModel>()

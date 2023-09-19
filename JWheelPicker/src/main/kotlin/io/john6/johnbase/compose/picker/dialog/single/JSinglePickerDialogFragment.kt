@@ -44,7 +44,7 @@ import io.john6.johnbase.compose.ui.jSurfaceColorAtElevation
  *
  * Example to use
  * ```kotlin
- * JCustomPickerDialogFragment.show(
+ * JSinglePickerDialogFragment.show(
  *     parentFragmentManager,
  *     title = "Demo Picker",
  *     initialIndex = 4,

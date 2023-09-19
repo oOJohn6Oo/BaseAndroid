@@ -1,10 +1,11 @@
-package com.john6.johnbase.util.tooltips
+package io.john6.johnbase.util.tooltips
 
 import android.os.Build
 import androidx.annotation.RequiresApi
 import com.google.android.material.shape.EdgeTreatment
 import com.google.android.material.shape.ShapePath
-import com.john6.johnbase.util.vdp
+import io.john6.johnbase.util.tooltips.TipDrawGravity
+import io.john6.johnbase.util.vdp
 
 
 /**

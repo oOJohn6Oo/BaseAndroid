@@ -9,9 +9,9 @@ import androidx.core.view.WindowInsetsCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import com.john6.appbase.databinding.FragmentDemoLoadingBinding
-import com.john6.johnbase.util.InsetsHelper
-import com.john6.johnbase.util.LoadingHelper
-import com.john6.johnbase.util.safeDrawing
+import io.john6.johnbase.util.InsetsHelper
+import io.john6.johnbase.util.LoadingHelper
+import io.john6.johnbase.util.safeDrawing
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.isActive
