@@ -20,9 +20,13 @@ But I will still publish on it.
 
 ### Main Features
 
-#### [InsetsHelper]
+<details>
+  
+<summary> InsetsHelper </summary>
 
-Included in `base-*`, used for handling WindowInsets.
+[InsetsHelper]
+
+> Included in `base-*`, used for handling WindowInsets.
 
 * LifeCycle aware, auto release when activity destroyed.
 * Auto handle WindowInsets.
@@ -32,22 +36,54 @@ Included in `base-*`, used for handling WindowInsets.
 
 Usage:
 
-https://github.com/oOJohn6Oo/BaseAndroid/blob/0c6dc5d4c24ed979a06dc536311a592a4f464473/JohnBase/src/main/java/com/john6/johnbase/util/InsetsHelper.kt#L31-L43
+``` kotlin
+class MyActivity: AppCompatActivity() { 
+    private val insetsHelper = InsetsHelper() 
+    override fun onCreate(savedInstanceState: Bundle?) { 
+        super.onCreate(savedInstanceState) 
+        lifecycle.addObserver(insetsHelper) 
+        // init ViewBinding 
+        // Config Inset View 
+        insetsHelper.statusBarResponseView = binding.toolBarAttMain 
+        insetsHelper.navBarResponseView = binding.recycleViewAttMain 
+    }
+} 
+```
 
-#### [ProgressHelper]
-Included in `base-*`, used for show normal prompt.
+</details>
+
+<details>
+  
+<summary> ProgressHelper </summary>
+
+[ProgressHelper]
+
+> Included in `base-*`, used for show normal prompt.
 
 * Support delay trigger.
 * LifeCycle aware, auto release when activity destroyed.
 * Avoid duplicate, all components in same activity shares one dialog.
 
-#### [JohnAppTheme]
+</details>
 
-Included in `compose-*`, used for quickly handle staff related to status bar and navigation bar.
+<details>
+  
+<summary> JohnAppTheme </summary>
+
+[JohnAppTheme]
+
+> Included in `compose-*`, used for quickly handle staff related to status bar and navigation bar.
 
 * Include all [InsetsHelper] features.
 
-#### [JTooltips]
+</details>
+
+<details>
+
+<summary> JTooltips </summary>
+
+[JTooltips]
+
 > Included in `base-*`, used for show tooltips easily.<br>
 > With extension function we can auto calculate view position and tip stick offset
 
@@ -90,12 +126,19 @@ Included in `compose-*`, used for quickly handle staff related to status bar and
   | android:src | as the name says |
   | disableTailIcon | hide the divider and icon |
 
-#### [JWheelPicker]
+</details>
+
+<details>
+  
+<summary> JWheelPicker </summary>
+
+[JWheelPicker]
 
 * iOS style wheel picker
 * For single wheel picker, use [JSinglePickerDialogFragment], need to pass List<T>
 * For multiple wheel picker, use [JMultiplePickerDialogFragment], need to implement your own [IMultipleJPickerAdapter]
 
+</details>
 
 [JitPack Icon]: https://jitpack.io/v/oOJohn6Oo/BaseAndroid.svg
 [InsetsHelper]: ./JohnBase/src/main/kotlin/io/john6/johnbase/util/InsetsHelper.kt
