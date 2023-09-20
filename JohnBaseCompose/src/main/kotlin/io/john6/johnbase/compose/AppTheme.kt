@@ -4,24 +4,16 @@ import android.app.Activity
 import android.content.ContentResolver
 import android.content.Context
 import android.content.ContextWrapper
-import android.os.Build
 import android.provider.Settings
 import android.view.Window
 import androidx.compose.foundation.isSystemInDarkTheme
-import androidx.compose.foundation.layout.WindowInsets
-import androidx.compose.foundation.layout.WindowInsetsSides
-import androidx.compose.foundation.layout.only
-import androidx.compose.foundation.layout.safeDrawing
-import androidx.compose.foundation.layout.windowInsetsPadding
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.ElevationOverlay
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Shapes
 import androidx.compose.material.darkColors
 import androidx.compose.material.lightColors
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
-import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.toArgb
 import androidx.compose.ui.platform.LocalConfiguration
@@ -51,7 +43,7 @@ fun JohnAppTheme(
             }
         }
     }
-    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP && enableDefaultNavScrim){
+    if (enableDefaultNavScrim){
         LaunchedEffect(LocalConfiguration.current){
             view.context.findWindow()?.apply {
                 val scrimColor = if (isGestureNav(view.context.contentResolver, ViewCompat.getRootWindowInsets(view))) {
@@ -107,7 +99,6 @@ private val isMiUI by lazy {
  */
 private fun isGestureNav(contentResolver: ContentResolver?, insets: WindowInsetsCompat?): Boolean {
     if (isMiUI) {
-        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.JELLY_BEAN_MR1) return false
         val miNavBarMode =
             Settings.Global.getInt(contentResolver, "force_fsg_nav_bar", 0)
         return miNavBarMode == 1

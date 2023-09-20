@@ -18,4 +18,3 @@ rootProject.name = "AppBase"
 include(":app")
 include(":JohnBase")
 include(":JohnBaseCompose")
-include(":JWheelPicker")
