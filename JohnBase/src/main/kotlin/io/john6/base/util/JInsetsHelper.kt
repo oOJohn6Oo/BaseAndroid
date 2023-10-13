@@ -157,14 +157,14 @@ open class JInsetsHelper : DefaultLifecycleObserver {
         val desiredView = observeView ?: return
 
         ViewCompat.setOnApplyWindowInsetsListener(desiredView) { _, insets ->
-
-            // Ensure BottomSheetDialog is correctly set to full screen
+            // Google changed the logic of fitsSystemWindow in BottomSheetDialog in 1.7.0,
+            // and setDecorFitsSystemWindows will causing another new WindowInsets dispatch.
+            // So, we need to check fitsSystemWindow before.
             window?.also {
-                if(!it.decorView.fitsSystemWindows){
+                if(it.decorView.fitsSystemWindows) {
                     WindowCompat.setDecorFitsSystemWindows(it, false)
                 }
             }
-
             onInsetsChanged?.invoke(insets)
             val inset = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             configStatusBarResponse(inset.top)
