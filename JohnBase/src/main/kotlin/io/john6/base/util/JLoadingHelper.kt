@@ -1,6 +1,6 @@
 @file:Suppress("DEPRECATION")
 
-package io.john6.johnbase.util
+package io.john6.base.util
 
 
 import android.app.ProgressDialog
@@ -14,13 +14,14 @@ import androidx.lifecycle.LifecycleOwner
 /**
  * Loading 弹窗 工具类
  *
- * 只需 `ProgressHelper.show(context)` 或 `ProgressHelper.dismiss(context)` 即可显示隐藏 LoadingDialog
+ * 只需 `JLoadingHelper.show(context)` 或 `JLoadingHelper.dismiss(context)` 即可显示隐藏 LoadingDialog
  *
  * * 支持延时启动
  * * 多个 Fragment 只显示一个 LoadingDialog
  * * 自动处理生命周期
+ * * ⚠️**context 仅支持 [androidx.activity.ComponentActivity]**
  */
-object LoadingHelper : DefaultLifecycleObserver {
+object JLoadingHelper : DefaultLifecycleObserver {
     private val mDialogList = mutableMapOf<LifecycleOwner, ProgressDialog?>()
     private val mDialogShowingMap = mutableMapOf<LifecycleOwner, Boolean>()
 

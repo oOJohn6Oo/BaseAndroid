@@ -1,4 +1,4 @@
-package io.john6.johnbase.util.tooltips
+package io.john6.base.util.tooltips
 
 import android.app.Activity
 import android.content.Context
@@ -30,8 +30,8 @@ import com.google.android.material.shape.MaterialShapeUtils
 import com.google.android.material.shape.ShapeAppearanceModel
 import com.google.android.material.shape.Shapeable
 import io.john6.johnbase.R
-import io.john6.johnbase.util.getRectInWindow
-import io.john6.johnbase.util.vdp
+import io.john6.base.util.getRectInWindow
+import io.john6.base.util.vdp
 
 
 /**
@@ -211,10 +211,11 @@ open class JTooltipsLayout : FrameLayout, Shapeable {
 
     /**
      * Update the button's background without changing the background state in [ ]. This should be used when we initially set the background drawable
-     * created by [MaterialButtonHelper].
+     * created by [com.google.android.material.button.MaterialButtonHelper].
      *
      * @param background Background to set on this button
      */
+    @Suppress("DEPRECATION")
     fun setInternalBackground(background: Drawable?) {
         super.setBackgroundDrawable(background)
     }
@@ -227,6 +228,7 @@ open class JTooltipsLayout : FrameLayout, Shapeable {
         background?.also { setBackgroundDrawable(it) }
     }
 
+    @Suppress("OVERRIDE_DEPRECATION", "DEPRECATION")
     override fun setBackgroundDrawable(background: Drawable) {
         if (isUsingOriginalBackground()) {
             if (background !== this.background) {

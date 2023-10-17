@@ -11,21 +11,21 @@ import androidx.navigation.fragment.findNavController
 import io.john6.appbase.databinding.FragmentMainBinding
 import io.john6.appbase.ui.adapter.MainListAdapter
 import io.john6.appbase.vm.MainViewModel
-import io.john6.johnbase.util.InsetsHelper
-import io.john6.johnbase.util.safeDrawing
+import io.john6.base.util.JInsetsHelper
+import io.john6.base.util.safeDrawing
 
 class MainFragment : Fragment() {
     private val mViewModel by viewModels<MainViewModel>()
 
     private var _mBinding: FragmentMainBinding? = null
     private val mBinding get() = _mBinding!!
-    private val insetsHelper = InsetsHelper().apply {
+    private val JInsetsHelper = JInsetsHelper().apply {
         enforceNavBar = true
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        lifecycle.addObserver(insetsHelper)
+        lifecycle.addObserver(JInsetsHelper)
         mViewModel.initNavGraphData(findNavController())
     }
 
@@ -42,7 +42,7 @@ class MainFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         mBinding.recyclerViewFgMain.adapter = MainListAdapter()
         mViewModel.getAvailablePage().observe(viewLifecycleOwner, this::onListDataChanged)
-        insetsHelper.onInsetsChanged = { insets ->
+        JInsetsHelper.onInsetsChanged = { insets ->
             insets.safeDrawing().apply {
                 mBinding.recyclerViewFgMain.setPaddingRelative(left, 0, right, bottom)
             }

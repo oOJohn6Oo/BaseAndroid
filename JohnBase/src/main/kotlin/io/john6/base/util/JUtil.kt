@@ -1,6 +1,6 @@
 @file:Suppress("unused")
 
-package io.john6.johnbase.util
+package io.john6.base.util
 
 import android.animation.ObjectAnimator
 import android.content.Context

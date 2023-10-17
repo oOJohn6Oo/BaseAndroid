@@ -27,7 +27,7 @@ import androidx.compose.ui.platform.ComposeView
 import androidx.compose.ui.platform.LocalContext
 import androidx.fragment.app.Fragment
 import com.google.android.material.color.MaterialColors
-import io.john6.johnbase.compose.JohnAppTheme
+import io.john6.base.compose.JAppTheme
 import io.john6.johnbase.compose.picker.JWheelPickerHelper
 import io.john6.johnbase.compose.picker.bean.JWheelPickerItemInfo
 import io.john6.johnbase.compose.picker.dialog.multiple.IMultipleJPickerAdapter
@@ -35,7 +35,7 @@ import io.john6.johnbase.compose.picker.dialog.multiple.JMultiPickerDialogData
 import io.john6.johnbase.compose.picker.dialog.multiple.JMultiplePickerDialogFragment
 import io.john6.johnbase.compose.picker.dialog.single.JSinglePickerDialogData
 import io.john6.johnbase.compose.picker.dialog.single.JSinglePickerDialogFragment
-import io.john6.johnbase.compose.spaceLarge
+import io.john6.base.compose.spaceLarge
 
 class DemoComposeFragment : Fragment() {
     override fun onCreateView(
@@ -128,7 +128,7 @@ private fun DemoComposeScreen(
 ) {
     val context = LocalContext.current
     val primaryColor = MaterialColors.getColor(context, android.R.attr.colorPrimary, android.graphics.Color.RED)
-    JohnAppTheme {
+    JAppTheme {
         LazyColumn(
             modifier = Modifier
                 .fillMaxSize(),

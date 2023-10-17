@@ -14,8 +14,8 @@ import androidx.navigation.navOptions
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.Adapter
 import io.john6.appbase.app
-import io.john6.johnbase.util.getAttrResId
-import io.john6.johnbase.util.vdp
+import io.john6.base.util.getAttrResId
+import io.john6.base.util.vdp
 
 class MainListAdapter : Adapter<RecyclerView.ViewHolder>() {
 
