@@ -1,4 +1,4 @@
-package io.john6.johnbase.util.tooltips
+package io.john6.base.util.tooltips
 
 import android.annotation.SuppressLint
 import android.content.Context
@@ -12,7 +12,7 @@ import androidx.annotation.RequiresApi
 import androidx.core.content.withStyledAttributes
 import io.john6.johnbase.R
 import io.john6.johnbase.databinding.ItemDefaultTooltipsBinding
-import io.john6.johnbase.util.vsp
+import io.john6.base.util.vsp
 
 
 /**

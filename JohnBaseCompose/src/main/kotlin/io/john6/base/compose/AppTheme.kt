@@ -1,4 +1,4 @@
-package io.john6.johnbase.compose
+package io.john6.base.compose
 
 import android.app.Activity
 import android.content.ContentResolver
@@ -25,7 +25,7 @@ import androidx.core.view.WindowCompat
 import androidx.core.view.WindowInsetsCompat
 
 @Composable
-fun JohnAppTheme(
+fun JAppTheme(
     enableDefaultAppearance: Boolean = true,
     enableDefaultNavScrim: Boolean = true,
     content: @Composable () -> Unit

@@ -1,4 +1,4 @@
-package io.john6.johnbase.compose.ui
+package io.john6.base.compose.ui
 
 import androidx.compose.animation.core.AnimationState
 import androidx.compose.animation.core.DecayAnimationSpec

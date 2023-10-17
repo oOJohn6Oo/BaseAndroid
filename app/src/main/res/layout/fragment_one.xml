@@ -18,7 +18,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="24dp"
-            android:text="CEDefaultTooltips"
+            android:text="JDefaultTooltips"
             android:textColor="?android:attr/colorPrimary"
             android:textSize="24sp"
             android:textStyle="bold"
@@ -34,7 +34,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/section_button" />
 
-        <io.john6.johnbase.util.tooltips.JDefaultTooltips
+        <io.john6.base.util.tooltips.JDefaultTooltips
             android:id="@+id/btn_test_1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -50,7 +50,7 @@
             app:tipDrawStyle="triangle"
             app:tipEdge="edgeStart" />
 
-        <io.john6.johnbase.util.tooltips.JDefaultTooltips
+        <io.john6.base.util.tooltips.JDefaultTooltips
             android:id="@+id/btn_test_2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -65,7 +65,7 @@
             app:tipDrawStyle="triangle"
             app:tipEdge="edgeEnd" />
 
-        <io.john6.johnbase.util.tooltips.JDefaultTooltips
+        <io.john6.base.util.tooltips.JDefaultTooltips
             android:id="@+id/btn_test_3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -80,7 +80,7 @@
             app:tipDrawStyle="triangle"
             app:tipEdge="edgeTop" />
 
-        <io.john6.johnbase.util.tooltips.JDefaultTooltips
+        <io.john6.base.util.tooltips.JDefaultTooltips
             android:id="@+id/btn_test_4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -94,7 +94,7 @@
             app:tipDrawStyle="triangle"
             app:tipEdge="edgeBottom" />
 
-        <io.john6.johnbase.util.tooltips.JDefaultTooltips
+        <io.john6.base.util.tooltips.JDefaultTooltips
             android:id="@+id/btn_test_5"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -120,7 +120,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/btn_test_1" />
 
-        <io.john6.johnbase.util.tooltips.JDefaultTooltips
+        <io.john6.base.util.tooltips.JDefaultTooltips
             android:id="@+id/btn_icon_1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -140,7 +140,7 @@
             app:tipDrawStyle="triangle"
             app:tipEdge="edgeAll" />
 
-        <io.john6.johnbase.util.tooltips.JDefaultTooltips
+        <io.john6.base.util.tooltips.JDefaultTooltips
             android:id="@+id/btn_icon_2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -160,7 +160,7 @@
             app:tipEdge="edgeAll"
             app:tipWidth="10dp" />
 
-        <io.john6.johnbase.util.tooltips.JDefaultTooltips
+        <io.john6.base.util.tooltips.JDefaultTooltips
             android:id="@+id/btn_icon_3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -189,7 +189,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/btn_icon_1" />
 
-        <io.john6.johnbase.util.tooltips.JDefaultTooltips
+        <io.john6.base.util.tooltips.JDefaultTooltips
             android:id="@+id/btn_test_9"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -208,7 +208,7 @@
             app:tipEdge="edgeTop"
             app:tipWidth="10dp" />
 
-        <io.john6.johnbase.util.tooltips.JDefaultTooltips
+        <io.john6.base.util.tooltips.JDefaultTooltips
             android:id="@+id/btn_test_10"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -227,7 +227,7 @@
             app:tipEdge="edgeTop"
             app:tipWidth="10dp" />
 
-        <io.john6.johnbase.util.tooltips.JDefaultTooltips
+        <io.john6.base.util.tooltips.JDefaultTooltips
             android:id="@+id/btn_test_11"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -254,7 +254,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/btn_test_9" />
 
-        <io.john6.johnbase.util.tooltips.JDefaultTooltips
+        <io.john6.base.util.tooltips.JDefaultTooltips
             android:id="@+id/btn_test_12"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -274,7 +274,7 @@
             app:tipEdge="edgeTop"
             app:tipWidth="10dp" />
 
-        <io.john6.johnbase.util.tooltips.JDefaultTooltips
+        <io.john6.base.util.tooltips.JDefaultTooltips
             android:id="@+id/btn_test_13"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -293,7 +293,7 @@
             app:tipEdge="edgeTop"
             app:tipWidth="10dp" />
 
-        <io.john6.johnbase.util.tooltips.JDefaultTooltips
+        <io.john6.base.util.tooltips.JDefaultTooltips
             android:id="@+id/btn_test_14"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -321,7 +321,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/btn_test_12" />
 
-        <io.john6.johnbase.util.tooltips.JDefaultTooltips
+        <io.john6.base.util.tooltips.JDefaultTooltips
             android:id="@+id/btn_test_15"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -341,7 +341,7 @@
             app:tipEdge="edgeTop"
             app:tipWidth="10dp" />
 
-        <io.john6.johnbase.util.tooltips.JDefaultTooltips
+        <io.john6.base.util.tooltips.JDefaultTooltips
             android:id="@+id/btn_test_16"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -360,7 +360,7 @@
             app:tipEdge="edgeTop"
             app:tipWidth="10dp" />
 
-        <io.john6.johnbase.util.tooltips.JDefaultTooltips
+        <io.john6.base.util.tooltips.JDefaultTooltips
             android:id="@+id/btn_test_17"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -388,7 +388,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/btn_test_15" />
 
-        <io.john6.johnbase.util.tooltips.JDefaultTooltips
+        <io.john6.base.util.tooltips.JDefaultTooltips
             android:id="@+id/btn_test_18"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -410,7 +410,7 @@
             app:tipEdge="edgeTop"
             app:tipWidth="10dp" />
 
-        <io.john6.johnbase.util.tooltips.JDefaultTooltips
+        <io.john6.base.util.tooltips.JDefaultTooltips
             android:id="@+id/btn_test_19"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -431,7 +431,7 @@
             app:tipEdge="edgeTop"
             app:tipWidth="10dp" />
 
-        <io.john6.johnbase.util.tooltips.JDefaultTooltips
+        <io.john6.base.util.tooltips.JDefaultTooltips
             android:id="@+id/btn_test_20"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -473,7 +473,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/section_demo" />
 
-        <io.john6.johnbase.util.tooltips.JTooltipsLayout
+        <io.john6.base.util.tooltips.JTooltipsLayout
             android:id="@+id/card_coupon"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -516,7 +516,7 @@
                     android:textStyle="bold" />
             </LinearLayout>
 
-        </io.john6.johnbase.util.tooltips.JTooltipsLayout>
+        </io.john6.base.util.tooltips.JTooltipsLayout>
 
         <TextView
             android:id="@+id/title_item_tooltips"
@@ -527,7 +527,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/card_coupon" />
 
-        <io.john6.johnbase.util.tooltips.JDefaultTooltips
+        <io.john6.base.util.tooltips.JDefaultTooltips
             android:id="@+id/tooltips_1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -537,7 +537,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/title_item_tooltips" />
 
-        <io.john6.johnbase.util.tooltips.JDefaultTooltips
+        <io.john6.base.util.tooltips.JDefaultTooltips
             android:id="@+id/tooltips_2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

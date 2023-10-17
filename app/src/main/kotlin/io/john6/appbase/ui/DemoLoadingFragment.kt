@@ -9,9 +9,9 @@ import androidx.core.view.WindowInsetsCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import io.john6.appbase.databinding.FragmentDemoLoadingBinding
-import io.john6.johnbase.util.InsetsHelper
-import io.john6.johnbase.util.LoadingHelper
-import io.john6.johnbase.util.safeDrawing
+import io.john6.base.util.JInsetsHelper
+import io.john6.base.util.JLoadingHelper
+import io.john6.base.util.safeDrawing
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.isActive
@@ -25,13 +25,13 @@ class DemoLoadingFragment: Fragment() {
     private var job:Job? = null
     private var toast:Toast? = null
 
-    private val mInsetsHelper = InsetsHelper().apply {
+    private val mJInsetsHelper = JInsetsHelper().apply {
         onInsetsChanged = this@DemoLoadingFragment::onInsetsChanged
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        lifecycle.addObserver(mInsetsHelper)
+        lifecycle.addObserver(mJInsetsHelper)
     }
 
     override fun onCreateView(
@@ -65,7 +65,7 @@ class DemoLoadingFragment: Fragment() {
         toast = Toast.makeText(requireContext(), "task start", Toast.LENGTH_SHORT)
         toast?.show()
 
-        LoadingHelper.show(requireContext())
+        JLoadingHelper.show(requireContext())
         val delay = mBinding.seekBarFgDemoLoading.value.toLong()
         job = lifecycleScope.launch {
             delay(delay)
@@ -73,13 +73,13 @@ class DemoLoadingFragment: Fragment() {
                 toast?.cancel()
                 toast = Toast.makeText(requireContext(), "task time: ${delay}ms", Toast.LENGTH_SHORT)
                 toast?.show()
-                LoadingHelper.dismiss(requireContext())
+                JLoadingHelper.dismiss(requireContext())
             }
         }
     }
 
     override fun onDestroyView() {
         super.onDestroyView()
-        LoadingHelper.dismiss(requireContext())
+        JLoadingHelper.dismiss(requireContext())
     }
 }

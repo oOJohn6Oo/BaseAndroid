@@ -1,6 +1,4 @@
-@file:Suppress("MemberVisibilityCanBePrivate")
-
-package io.john6.johnbase.util
+package io.john6.base.util
 
 import android.annotation.SuppressLint
 import android.app.Activity
@@ -18,6 +16,8 @@ import androidx.core.graphics.Insets
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowCompat
 import androidx.core.view.WindowInsetsCompat
+import androidx.core.view.marginBottom
+import androidx.core.view.updatePadding
 import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.DefaultLifecycleObserver
@@ -30,7 +30,7 @@ import androidx.lifecycle.LifecycleOwner
  * | Edge-To-Edge | 系统遮罩 | 手势判断 | 生命周期感知 |
  * ``` kotlin
  * class MyActivity: AppCompatActivity() {
- *   private val insetsHelper = InsetsHelper()
+ *   private val insetsHelper = JInsetsHelper()
  *   override fun onCreate(savedInstanceState: Bundle?) {
  *     super.onCreate(savedInstanceState)
  *     lifecycle.addObserver(insetsHelper)
@@ -42,7 +42,8 @@ import androidx.lifecycle.LifecycleOwner
  * }
  * ```
  */
-open class InsetsHelper : DefaultLifecycleObserver {
+@Suppress("MemberVisibilityCanBePrivate")
+open class JInsetsHelper : DefaultLifecycleObserver {
 
     /**
      * 如果拦截 WindowInsets，则会强制分发一次 WindowInsets 到这个View
@@ -157,6 +158,13 @@ open class InsetsHelper : DefaultLifecycleObserver {
 
         ViewCompat.setOnApplyWindowInsetsListener(desiredView) { _, insets ->
 
+            // Ensure BottomSheetDialog is correctly set to full screen
+            window?.also {
+                if(!it.decorView.fitsSystemWindows){
+                    WindowCompat.setDecorFitsSystemWindows(it, false)
+                }
+            }
+
             onInsetsChanged?.invoke(insets)
             val inset = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             configStatusBarResponse(inset.top)
@@ -211,7 +219,7 @@ open class InsetsHelper : DefaultLifecycleObserver {
         if (owner is Fragment) {
             // we can touch viewLifecycleOwner only if view is not null
             // 内部使用 Map 存储，多次 add 不会有问题
-            owner.viewLifecycleOwner.lifecycle.addObserver(this@InsetsHelper)
+            owner.viewLifecycleOwner.lifecycle.addObserver(this@JInsetsHelper)
         }
     }
 

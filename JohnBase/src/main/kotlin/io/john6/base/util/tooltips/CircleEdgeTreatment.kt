@@ -1,8 +1,8 @@
-package io.john6.johnbase.util.tooltips
+package io.john6.base.util.tooltips
 
 import com.google.android.material.shape.EdgeTreatment
 import com.google.android.material.shape.ShapePath
-import io.john6.johnbase.util.tooltips.TipDrawGravity
+import io.john6.base.util.tooltips.TipDrawGravity
 
 
 /**

@@ -17,13 +17,13 @@ import androidx.navigation.NavDestination
 import androidx.navigation.findNavController
 import com.google.android.material.color.DynamicColors
 import io.john6.appbase.databinding.ActivityMainBinding
-import io.john6.johnbase.util.InsetsHelper
-import io.john6.johnbase.util.safeDrawing
-import io.john6.johnbase.util.tooltips.JDefaultTooltips
-import io.john6.johnbase.util.tooltips.TipEdge
-import io.john6.johnbase.util.tooltips.showAsPopupAsideView
-import io.john6.johnbase.util.vdp
-import io.john6.johnbase.util.visible
+import io.john6.base.util.JInsetsHelper
+import io.john6.base.util.safeDrawing
+import io.john6.base.util.tooltips.JDefaultTooltips
+import io.john6.base.util.tooltips.TipEdge
+import io.john6.base.util.tooltips.showAsPopupAsideView
+import io.john6.base.util.vdp
+import io.john6.base.util.visible
 
 @SuppressLint("StaticFieldLeak")
 lateinit var app: Context
@@ -35,14 +35,14 @@ lateinit var app: Context
  */
 class MainActivity : FragmentActivity() {
     private lateinit var mBinding: ActivityMainBinding
-    private val insetsHelper = InsetsHelper()
+    private val JInsetsHelper = JInsetsHelper()
     private val onDestChangeListener =
         NavController.OnDestinationChangedListener(this::onDestinationChanged)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         app = this.applicationContext
-        lifecycle.addObserver(insetsHelper)
+        lifecycle.addObserver(JInsetsHelper)
         DynamicColors.applyToActivityIfAvailable(this)
         mBinding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(mBinding.root)
@@ -69,7 +69,7 @@ class MainActivity : FragmentActivity() {
         }
         mBinding.titleAttMain.setOnClickListener(this::onTitleClicked)
         mBinding.titleAttMain.setOnLongClickListener(this::onTitleLongClicked)
-        insetsHelper.onInsetsChanged = { insets ->
+        JInsetsHelper.onInsetsChanged = { insets ->
             val safeContent = insets.safeDrawing()
             mBinding.toolbarAttMain.setPaddingRelative(
                 safeContent.left,

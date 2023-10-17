@@ -1,4 +1,4 @@
-package io.john6.johnbase.compose.ui
+package io.john6.base.compose.ui
 
 import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.WindowInsetsSides
