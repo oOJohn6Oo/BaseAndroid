@@ -11,9 +11,9 @@
 
 <details>
   
-<summary> InsetsHelper -- Handling WindowInsets easily </summary>
+<summary> JInsetsHelper -- Handling WindowInsets easily </summary>
 
-[InsetsHelper]
+[JInsetsHelper]
 
 > Included in `base-*`, used for handling WindowInsets.
 
@@ -27,7 +27,7 @@ Usage:
 
 ``` kotlin
 class MyActivity: AppCompatActivity() { 
-    private val insetsHelper = InsetsHelper() 
+    private val insetsHelper = JInsetsHelper() 
     override fun onCreate(savedInstanceState: Bundle?) { 
         super.onCreate(savedInstanceState) 
         lifecycle.addObserver(insetsHelper) 
@@ -43,9 +43,9 @@ class MyActivity: AppCompatActivity() {
 
 <details>
   
-<summary> ProgressHelper -- LifeCycle aware Progress Dialog </summary>
+<summary> JLoadingHelper -- LifeCycle aware Progress Dialog </summary>
 
-[ProgressHelper]
+[JLoadingHelper]
 
 > Included in `base-*`, used to show a normal prompt.
 
@@ -57,13 +57,13 @@ class MyActivity: AppCompatActivity() {
 
 <details>
   
-<summary> JohnAppTheme Pre-set Compose Theme </summary>
+<summary> JAppTheme Pre-set Compose Theme </summary>
 
-[JohnAppTheme]
+[JAppTheme]
 
 > Included in `compose-*`, used for quickly handling staff related to the status bar and navigation bar.
 
-* Include all [InsetsHelper] features.
+* Include all [JInsetsHelper] features.
 
 </details>
 
@@ -117,19 +117,6 @@ class MyActivity: AppCompatActivity() {
 
 </details>
 
-<details>
-  
-<summary> JWheelPicker iOS-style wheel picker</summary>
-
-[JWheelPicker]
-
-* iOS-style wheel picker
-* Haptic Feedback
-* For single wheel picker, use [JSinglePickerDialogFragment], need to pass List<T>
-* For multiple wheel pickers, use [JMultiplePickerDialogFragment], need to implement your own [IMultipleJPickerAdapter]
-
-</details>
-
 ### ~~Using GitHub Actions to push Packages~~
 
 Deprecated: since GitHub Packages do not allow public access.
@@ -142,13 +129,9 @@ Deprecated: since GitHub Packages do not allow public access.
 
 
 [JitPack Icon]: https://jitpack.io/v/oOJohn6Oo/BaseAndroid.svg
-[InsetsHelper]: ./JohnBase/src/main/kotlin/io/john6/johnbase/util/InsetsHelper.kt
-[ProgressHelper]: ./JohnBase/src/main/kotlin/io/john6/johnbase/util/LoadingHelper.kt
-[JohnAppTheme]: ./JohnBaseCompose/src/main/kotlin/io/john6/johnbase/compose/AppTheme.kt
-[JTooltips]: ./JohnBase/src/main/kotlin/io/john6/johnbase/util/tooltips
-[JTooltipsLayout]: ./JohnBase/src/main/kotlin/io/john6/johnbase/util/tooltips/JTooltipsLayout.kt
-[JDefaultTooltips]: ./JohnBase/src/main/kotlin/io/john6/johnbase/util/tooltips/JDefaultTooltips.kt
-[JWheelPicker]: ./JWheelPicker/src/main/kotlin/io/john6/johnbase/compose/picker/JWheelPicker.kt
-[JSinglePickerDialogFragment]: ./JWheelPicker/src/main/kotlin/io/john6/johnbase/compose/picker/dialog/single/JSinglePickerDialogFragment.kt
-[JMultiplePickerDialogFragment]: ./JWheelPicker/src/main/kotlin/io/john6/johnbase/compose/picker/dialog/multiple/JMultiplePickerDialogFragment.kt
-[IMultipleJPickerAdapter]: ./JWheelPicker/src/main/kotlin/io/john6/johnbase/compose/picker/dialog/multiple/IMultipleJPickerAdapter.kt
+[JInsetsHelper]: ./JohnBase/src/main/kotlin/io/john6/base/util/JInsetsHelper.kt
+[JLoadingHelper]: ./JohnBase/src/main/kotlin/io/john6/base/util/JLoadingHelper.kt
+[JAppTheme]: ./JohnBaseCompose/src/main/kotlin/io/john6/base/compose/AppTheme.kt
+[JTooltips]: ./JohnBase/src/main/kotlin/io/john6/base/util/tooltips
+[JTooltipsLayout]: ./JohnBase/src/main/kotlin/io/john6/base/util/tooltips/JTooltipsLayout.kt
+[JDefaultTooltips]: ./JohnBase/src/main/kotlin/io/john6/base/util/tooltips/JDefaultTooltips.kt
