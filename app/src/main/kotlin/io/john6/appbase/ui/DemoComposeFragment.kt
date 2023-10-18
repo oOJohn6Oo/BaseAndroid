@@ -28,14 +28,19 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.fragment.app.Fragment
 import com.google.android.material.color.MaterialColors
 import io.john6.base.compose.JAppTheme
-import io.john6.johnbase.compose.picker.JWheelPickerHelper
-import io.john6.johnbase.compose.picker.bean.JWheelPickerItemInfo
-import io.john6.johnbase.compose.picker.dialog.multiple.IMultipleJPickerAdapter
-import io.john6.johnbase.compose.picker.dialog.multiple.JMultiPickerDialogData
-import io.john6.johnbase.compose.picker.dialog.multiple.JMultiplePickerDialogFragment
-import io.john6.johnbase.compose.picker.dialog.single.JSinglePickerDialogData
-import io.john6.johnbase.compose.picker.dialog.single.JSinglePickerDialogFragment
+import io.john6.base.compose.picker.JWheelPickerHelper
+import io.john6.base.compose.picker.bean.JWheelPickerItemInfo
+import io.john6.base.compose.picker.dialog.date.JDatePickerDialogData
+import io.john6.base.compose.picker.dialog.date.JDateWheelPickerDialogFragment
+import io.john6.base.compose.picker.dialog.multiple.IMultipleJPickerAdapter
+import io.john6.base.compose.picker.dialog.multiple.JMultiPickerDialogData
+import io.john6.base.compose.picker.dialog.multiple.JMultiplePickerDialogFragment
+import io.john6.base.compose.picker.dialog.multiple.TestMultipleJPickerAdapter
+import io.john6.base.compose.picker.dialog.single.JSinglePickerDialogData
+import io.john6.base.compose.picker.dialog.single.JSinglePickerDialogFragment
 import io.john6.base.compose.spaceLarge
+import java.io.Serializable
+import java.time.LocalDateTime
 
 class DemoComposeFragment : Fragment() {
     override fun onCreateView(
@@ -46,7 +51,8 @@ class DemoComposeFragment : Fragment() {
         setContent {
             DemoComposeScreen(
                 showSinglePicker = this@DemoComposeFragment::showSinglePicker,
-                showMultiplePicker = this@DemoComposeFragment::showMultiplePicker
+                showMultiplePicker = this@DemoComposeFragment::showMultiplePicker,
+                showDatePicker = this@DemoComposeFragment::showDatePicker
             )
         }
     }
@@ -57,16 +63,25 @@ class DemoComposeFragment : Fragment() {
             JSinglePickerDialogFragment.TAG,
             viewLifecycleOwner
         ) { _, bundle ->
-            val result = bundle.getParcelableCompat("result", JWheelPickerItemInfo::class.java)
+            val result = bundle.getParcelableCompat(JWheelPickerHelper.fragmentResultKey, JWheelPickerItemInfo::class.java)
             Toast.makeText(requireContext(), result?.id.toString(), Toast.LENGTH_SHORT).show()
         }
         parentFragmentManager.setFragmentResultListener(
             JMultiplePickerDialogFragment.TAG,
             viewLifecycleOwner
         ) { _, bundle ->
-            val result = bundle.getParcelableArrayCompat("result", JWheelPickerItemInfo::class.java)
+            val result = bundle.getParcelableArrayCompat(JWheelPickerHelper.fragmentResultKey, JWheelPickerItemInfo::class.java)
             Toast.makeText(requireContext(), result?.joinToString { it.id }, Toast.LENGTH_SHORT)
                 .show()
+        }
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            parentFragmentManager.setFragmentResultListener(
+                "customKey",
+                this
+            ) { _, bundle ->
+                val result = bundle.getSerializableCompat(JWheelPickerHelper.fragmentResultKey, LocalDateTime::class.java)
+                Toast.makeText(requireContext(), result.toString(), Toast.LENGTH_SHORT).show()
+            }
         }
     }
 
@@ -94,9 +109,29 @@ class DemoComposeFragment : Fragment() {
             requiredData = JMultiPickerDialogData(
                 title = 0 to "MultiplePicker",
                 overlayStyle = JWheelPickerHelper.overlayStyleOvalRectangle,
-                adapterClass = IMultipleJPickerAdapter.testAdapter::class.java
+                adapterClass = TestMultipleJPickerAdapter::class.java
             ),
         )
+    }
+
+    private fun showDatePicker() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            JDateWheelPickerDialogFragment.show(
+                parentFragmentManager,
+                requiredData = JDatePickerDialogData(
+                    title = 0 to "DatePicker",
+                    overlayStyle = JWheelPickerHelper.overlayStyleOvalRectangle,
+                    containerHorizontalPaddingInDp = 16
+                ),
+                tag = "customKey"
+            )
+        } else {
+            Toast.makeText(
+                requireContext(),
+                "need Build.VERSION.SDK_INT >= Build.VERSION_CODES.O",
+                Toast.LENGTH_SHORT
+            ).show()
+        }
     }
 
     @Suppress("DEPRECATION")
@@ -119,15 +154,29 @@ class DemoComposeFragment : Fragment() {
             getParcelableArray(key) as? Array<T>
         }
     }
+
+    @Suppress("DEPRECATION", "UNCHECKED_CAST")
+    private fun <T : Serializable> Bundle.getSerializableCompat(
+        key: String,
+        clazz: Class<T>
+    ): T? {
+        return if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+            getSerializable(key, clazz)
+        } else {
+            getSerializable(key) as? T
+        }
+    }
 }
 
 @Composable
 private fun DemoComposeScreen(
     showSinglePicker: () -> Unit,
-    showMultiplePicker: () -> Unit
+    showMultiplePicker: () -> Unit,
+    showDatePicker: () -> Unit
 ) {
     val context = LocalContext.current
-    val primaryColor = MaterialColors.getColor(context, android.R.attr.colorPrimary, android.graphics.Color.RED)
+    val primaryColor =
+        MaterialColors.getColor(context, android.R.attr.colorPrimary, android.graphics.Color.RED)
     JAppTheme {
         LazyColumn(
             modifier = Modifier
@@ -154,6 +203,16 @@ private fun DemoComposeScreen(
                     )
                 ) {
                     Text(text = "Show Multiple Piker")
+                }
+            }
+            item {
+                Button(
+                    onClick = showDatePicker, colors = ButtonDefaults.buttonColors(
+                        backgroundColor = Color(primaryColor),
+                        contentColor = MaterialTheme.colors.onPrimary
+                    )
+                ) {
+                    Text(text = "Show Date Piker")
                 }
             }
             items(50) {
